@@ -21,6 +21,7 @@ web.xml설정
 </servlet-mapping>
 */
 /*
+ * 
 * web.xml대신에 annotation[@] 사용
 * 
 */
