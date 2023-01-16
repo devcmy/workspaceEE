@@ -24,12 +24,17 @@ public class GugudanServlet extends HttpServlet {
 		out.println("<BODY>");
 		out.println("<center><H2>서블릿 잘났어 정말 별꼴이야!!!!!!!!!</H2><center>");
 		out.println("<img src='tomcat.svg'/>");
-
 		out.println("<center><H2>서블릿 구구단</H2></center>");
 		out.println("<table border=1 width=600 bgcolor=#CCFF33 bordercolordark=#FF6600 cellspacing=0>");
-		out.println("<tr>");
-		out.println("<td align=center>2*1=2</td>");
-		out.println("</tr>");
+		
+		 for(int i=1 ; i<=9 ; i++) {
+			 out.println("<tr>");
+					for(int j=2 ; j<=9 ; j++) {
+					out.printf("<td align=center> %d*%d=%2d</td> ",j,i,j*i);
+								}
+					out.println("</tr>");
+							}
+		
 		out.println("</table>");
 		out.println("<br/>");
 		out.println("</BODY>");
