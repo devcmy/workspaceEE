@@ -155,7 +155,7 @@
 	
 
 
-      <Context docBase="hmarket" path="/hmarket" reloadable="true" source="org.eclipse.jst.jee.server:hmarket"/><Context docBase="servletSite" path="/servletSite" reloadable="true" source="org.eclipse.jst.jee.server:servletSite"/></Host>
+      <Context docBase="hmarket" path="/hmarket" reloadable="true" source="org.eclipse.jst.jee.server:hmarket"/><Context docBase="servletSite" path="/servletSite" reloadable="true" source="org.eclipse.jst.jee.server:servletSite"/><Context docBase="htmlSite" path="/htmlSite" reloadable="true" source="org.eclipse.jst.jee.server:htmlSite"/></Host>
     </Engine>
   </Service>
 </Server>
