@@ -21,7 +21,7 @@ public class LifeCycleCounterServlet extends HttpServlet {
     @Override
     	public void init(ServletConfig config) throws ServletException {
     		super.init();
-    		System.out.println("1.init()메쏘드 생성자 호출 직후에 단한번 호출[객체 초기화]");
+    		System.out.println("1.init()메쏘드 생성자 호출 직후에 단한번 호출[객체 초기화,리소스 획득]");
     	}
     
     
@@ -30,4 +30,13 @@ public class LifeCycleCounterServlet extends HttpServlet {
 		System.out.println("2.service메쏘드가 실행");
 	}
 
+	@Override
+		public void destroy() {
+			System.out.println("3. destroy()메쏘드-->서블릿객체가 메모리에서해제되기직전에 호출된다.[리소스반납]");
+		}
+	
+	
+	
+	
+	
 }
