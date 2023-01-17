@@ -44,7 +44,7 @@ public class LifeCycleImageCounterServlet extends HttpServlet {
 		out.println("</html>");
 	}
 	
-	public String imagecount(int count) {
+ 	public String imagecount(int count) {
 		String count1 =Integer.toString(count);
 		String text="";
 		for (int i = 0; i < count1.length(); i++) {
@@ -52,9 +52,18 @@ public class LifeCycleImageCounterServlet extends HttpServlet {
 		}
 		
 		return text;
+	} 
+/*	
+	public String imagecount(int count) {
+		String count1 =Integer.toString(count);
+		String text="";
+		for (int i = 0; i < count1.length(); i++) {
+			text=text.concat("<img src='images/"+String.valueOf(count).charAt(i)+".png'>");
+		}
+		
+		return text;
 	}
-	
-
+*/
 
 	
 	
