@@ -34,6 +34,7 @@ public class GugudanServlet extends HttpServlet {
 								}
 					out.println("</tr>");
 							}
+		 
 		
 		out.println("</table>");
 		out.println("<br/>");
