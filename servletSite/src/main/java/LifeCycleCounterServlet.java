@@ -12,19 +12,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/lifeCycle_Counter.do")
 public class LifeCycleCounterServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LifeCycleCounterServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    	System.out.println("0.LifeCycleCounterServlet() 기본생성자호출[최초요청시 단 한번]");
     }
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
