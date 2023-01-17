@@ -14,24 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LifeCycleCounterServlet
  */
-@WebServlet("/lifeCycle_Counter.do")
-public class LifeCycleCounterServlet extends HttpServlet {
+@WebServlet("/lifeCycle_image_Counter.do")
+public class LifeCycleImageCounterServlet extends HttpServlet {
 	
 	private int count;
 	
-    public LifeCycleCounterServlet() {
-    	System.out.println("0.LifeCycleCounterServlet() 기본생성자호출[최초요청시 단 한번호출]객체 주소"+this);
-    }
-    
-    @Override
-    	public void init(ServletConfig config) throws ServletException {
-    		super.init();
-    		System.out.println("1.init()메쏘드 생성자 호출 직후에 단한번 호출[객체 초기화,리소스 획득]");
-    	}
-    
-    
+  
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		System.out.println("2.service메쏘드가 실행");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
@@ -50,10 +42,6 @@ public class LifeCycleCounterServlet extends HttpServlet {
 		out.println("</html>");
 	}
 
-	@Override
-		public void destroy() {
-			System.out.println("3. destroy()메쏘드-->서블릿객체가 메모리에서해제되기직전에 호출된다.[리소스반납]");
-		}
 	
 	
 	
