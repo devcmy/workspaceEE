@@ -21,37 +21,39 @@
 	</div>
 	<h4>같은 싸이트에있는 이미지</h4>
 	<div>
-		<img src="">
-		<img src="">
-		<img src="">
+		<img src="http://192.168.15.17/htmlSite/penguin1.gif">
+		<img src="http://192.168.15.17/htmlSite/penguin2.gif"">
+		<img src="http://192.168.15.17/htmlSite/penguin3.gif"">
 		<br>
-		<img src="" width="80px" height="80px">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
+		<img src="http://192.168.15.17/htmlSite/image/car1.jpg" width="80px" height="80px">
+		<img src="http://192.168.15.17/htmlSite/image/car2.jpg" width="80" height="80">
+		<img src="http://192.168.15.17/htmlSite/image/car3.jpg" width="80" height="80">
+		<img src="http://192.168.15.17/htmlSite/image/car4.jpg" width="80" height="80">
+		<img src="http://192.168.15.17/htmlSite/image/car5.jpg" width="80" height="80">
+		<img src="http://192.168.15.17/htmlSite/image/car6.jpg" width="80" height="80">
 	</div>
 	<hr>
-	<h2>상대경로[http://~ 로시작하지않는경로]</h2><hr>
+	<h2>상대경로[http://~ 로시작하지않는경로]</h2><hr> <!-- 상대경로 기술 추천 -->
 	<h4>같은 싸이트에있는 이미지-->기준경로 [http://localhost/htmlSite/]</h4>
 	<div>
-		<img src="">
-		<img src="">
-		<img src="">
+		<img src="./penguin1.gif">
+		<img src="./penguin2.gif"">
+		<img src="./penguin3.gif"">
+		<img src="penguin1.gif"> <!-- 상대경로기술시 "./" 혹은 "바로 기술" -->
+		<img src="penguin2.gif"">
+		<img src="penguin3.gif"">
 		<br>
-		<img src="" width="80px" height="80px">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
-		<img src="" width="80" height="80">
+		<img src="./image/car1.jpg" width="80px" height="80px">
+		<img src="./image/car2.jpg" width="80" height="80">
+		<img src="./image/car3.jpg" width="80" height="80">
+		<img src="./image/car4.jpg" width="80" height="80">
+		<img src="./image/car5.jpg" width="80" height="80">
+		<img src="./image/car6.jpg" width="80" height="80">
 	</div>
 	<h3>image에 링크(a tag)걸기</h3><br>
 	<div>
-		<a href=''><img src='' width="80" height="80"></a>	
-		<a href=''><img src='' width="80" height="80"></a>	
-		
+		<a href='/servletSite/lifeCycle_Counter.do'><img src='./penguin1.gif' width="80" height="80"></a>	<!-- 다른사이트걸때, root단위부터 위(상위)에서 아래(하위)로 기술 -->
+		<a href='/servletSite/gugudan.do'><img src='./penguin2.gif' width="80" height="80"></a>	
 		</div>
 </body>
 </html>
