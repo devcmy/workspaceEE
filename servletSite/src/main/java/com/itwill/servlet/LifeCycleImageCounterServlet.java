@@ -19,8 +19,7 @@ public class LifeCycleImageCounterServlet extends HttpServlet {
 	
 	private int count;
 	
-  
-
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
@@ -36,11 +35,24 @@ public class LifeCycleImageCounterServlet extends HttpServlet {
 		out.println("	<center>");
 		
 		//객체에 데이터 저장하는 -> 필드(멤버변수) 선언 //privte int count; (해당메쏘드 안에 생성시 로컬 되서 안됨, 클래스안에서 선언해라)
-		out.println("		현재까지의 페이지뷰수 <font color=#0000FF> "+ ++count +" </font> 번입니다");
+		out.println("		현재까지의 페이지뷰수 <font color=#0000FF> "+ imagecount(count) +" </font> 번입니다");
 		out.println("	</center>");
 		out.println("</body>");
 		out.println("</html>");
 	}
+	
+	public String imagecount(int count) {
+		String count1 =Integer.toString(count);
+		String text="";
+		for (int i = 0; i < count1.length(); i++) {
+			text=text.concat("<img src='images/"+count1.charAt(i)+".png'>");
+		}
+		
+		System.out.println(text);
+		return text;
+	}
+	
+	
 
 	
 	
