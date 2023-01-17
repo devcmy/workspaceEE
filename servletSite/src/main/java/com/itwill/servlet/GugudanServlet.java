@@ -23,6 +23,7 @@ public class GugudanServlet extends HttpServlet {
 		out.println("</HEAD>");
 		out.println("<BODY>");
 		out.println("<center><H2>서블릿 잘났어 정말 별꼴이야!!!!!!!!!</H2><center>");
+		
 		out.println("<img src='tomcat.svg'/>");
 		out.println("<center><H2>서블릿 구구단</H2></center>");
 		out.println("<table border=1 width=600 bgcolor=#CCFF33 bordercolordark=#FF6600 cellspacing=0>");
