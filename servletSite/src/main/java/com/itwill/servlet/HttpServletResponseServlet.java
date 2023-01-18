@@ -63,7 +63,7 @@ public class HttpServletResponseServlet extends HttpServlet {
 			 * <<redirect[방향재지정]>> -- 서버에서 제어로 이동하는법! 
 			 *  1.응답라인 302 -> Redirection을 하려고 준비한다
 			 *  2.응답헤더[Location:05-03.form1.html(redirection url) 이포함]
-			 *  3.응답바디데이타 없음(보낼수없음) => 바디데이터를 보낼수 없음. 
+			 *  3.응답바디데이타 없음(보낼수없음) => body데이터를 보낼수 없음. 
 			 *  4. 방향재지정은 한번밖에 안된다.
 			 *  방향재지정을 서버가 브라우저에게 응답하는것.
 			 */
