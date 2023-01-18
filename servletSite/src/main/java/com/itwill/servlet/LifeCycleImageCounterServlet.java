@@ -64,7 +64,20 @@ public class LifeCycleImageCounterServlet extends HttpServlet {
 	}
 */
 
-	
+	/*
+	 * count++;
+		out.println("		현재까지의 페이지뷰수 <font color=#0000FF>");
+		String countStr=count+"";
+		for (int i = 0; i < countStr.length(); i++) {
+			char tempChar = countStr.charAt(i);
+			out.println("<img src='images/"+tempChar+".png'>");
+		}
+		
+		out.println("</font> 번입니다");
+	 * 
+	 * 
+	 * 
+	 */
 	
 	
 	

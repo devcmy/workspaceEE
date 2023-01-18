@@ -26,10 +26,6 @@ public class HttpServletResponseServlet extends HttpServlet {
 		 */
 		
 		String cmd = request.getParameter("cmd");
-		if () {
-			
-		}
-		
 	}
 
 }
