@@ -46,6 +46,7 @@ public class JoinServlet2 extends HttpServlet {
 		 */
 		String id=request.getParameter("id");
 		String pass=request.getParameter("pass");
+		String repass=request.getParameter("repass");
 		String name=request.getParameter("name");
 		String addr=request.getParameter("addr");
 		String gender=request.getParameter("gender");
@@ -59,6 +60,16 @@ public class JoinServlet2 extends HttpServlet {
 		/*
 		 * 3.클라이언트로 응답 출력
 		 */
+		
+		if((pass.equals(repass))==false) {
+			out.println("<h3> 입력한 비밀번호 확인 바랍니다.</h3><hr>");
+			out.println("<a href = '05-03.form2.html'>회원가입 </a>");
+			return;
+		}
+		
+		
+		
+		
 		out.println("<!DOCTYPE html>");
 		out.println("<html>");
 		out.println("<head>");
@@ -85,7 +96,15 @@ public class JoinServlet2 extends HttpServlet {
 		out.println("		<tr>");
 		out.println("			<td>아이디</td>");
 		out.println("			<td>"+id+"</td>");
-		out.println("			<td rowspan='15'></td>");
+		
+		if(hobbies==null) {
+		
+			out.println("			<td rowspan='"+request.getParameterMap().size() +"'></td>");
+		}else {
+			out.println("			<td rowspan='"+request.getParameterMap().size()+hobbies.length +"'></td>");
+			
+		}
+		
 		out.println("		</tr>");
 		out.println("		<tr>");
 		out.println("			<td>패쓰워드</td>");
