@@ -22,8 +22,14 @@ public class JoinServlet1 extends HttpServlet {
 		response.sendRedirect("05-03.form1.html");
 	}
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");//응답 인코딩
 		PrintWriter out=response.getWriter();
+		
+		//post방식은 깨질수있어서 바꿔줘야한다.
+		/*
+		 * 0. 요청객체 인코딩설정
+		 */
+		request.setCharacterEncoding("UTF-8");
 		
 		/*
 		 * 1. 파라메타 받기
@@ -34,7 +40,7 @@ public class JoinServlet1 extends HttpServlet {
 		String email2=request.getParameter("email2");
 		String email=email1+"@"+email2;
 		String gender=request.getParameter("gender");
-		String favorite=request.getParameter("favorite");
+		String[] favorites=request.getParameterValues("favorite");
 		String message=request.getParameter("message");
 		
 		/*
@@ -46,15 +52,23 @@ public class JoinServlet1 extends HttpServlet {
 		 * 3. 클라이언트로 응답을 출력한다.
 		 */
 		out.println("<h1>가입정보</h1><hr>");
-		/*
-		 * <ul>
-		 * 		<li>아이디:</li>
-		 * 		<li>비밀번호:</li>
-		 * 		<li>성별:</li>
-		 * 		<li>관심영역:</li>
-		 * 		<li>가입인사:</li>
-		 * </ul>
-		 */
+		
+		out.println("<ul>");
+		out.println("<li>아이디:"+id+"</li>");
+		out.println("<li>패쓰워드:"+password+"</li>");
+		out.println("<li>이메일:"+email+"</li>");
+		out.println("<li>성별:"+gender+"</li>");
+		out.println("<li>가입인사:"+message+"</li>");
+		out.println("<li>관심사");
+		out.println("<ul>");
+		if(favorites!=null) {
+			for(String favorite:favorites) { //favorite의 length()로 작업하면 null 에러가 뜬다)
+				out.println("<li>"+favorite+"</li>");
+			}
+		}
+		out.println("</ul>");
+		out.println("</li>");
+		out.println("</ul>");
 		
 		
 		}
