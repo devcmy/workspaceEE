@@ -12,10 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class GetLoginServlet
  */
-@WebServlet("/get_login.do")
-public class GetLoginServlet extends HttpServlet {
+@WebServlet("/post_login.do")
+public class PostLoginServlet extends HttpServlet {
 	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.sendRedirect("05-02.login_post.html");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 	/*
@@ -27,9 +33,9 @@ public class GetLoginServlet extends HttpServlet {
 	String id = request.getParameter("id");
 	String pass = request.getParameter("pass");
 	if(id==null || id.equals("")||pass==null||pass.equals("")) {
-		response.sendRedirect("05-01.login_get.html");
+		response.sendRedirect("05-02.login_post.html");
 		return;
-	} //값이 하나 없으면 로그인 페이지(05-01.login_get.html)로 이동(방어코드 작성)
+	} //값이 하나 없으면 로그인 페이지(05-02.login_POST.html)로 이동(방어코드 작성)
 	
 	/*
 	 * 로그인업무실행(Service객체사용) -> DB쓰는대신에 임시로 사용
@@ -44,7 +50,7 @@ public class GetLoginServlet extends HttpServlet {
 	boolean isMember1 = id.equals("xxxx") && pass.equals("1111");
 	boolean isMember2 = id.equals("yyyy") && pass.equals("2222");
 	
-	out.print("<h1>GET 로그인결과</h1><hr>");
+	out.print("<h1>POST 로그인결과</h1><hr>");
 	if(isMember1 || isMember2 ) {
 		//로그인성공
 		out.println("<h3>"+id+"님 로그인성공</h3><hr>");
@@ -53,7 +59,7 @@ public class GetLoginServlet extends HttpServlet {
 		//로그인 실패
 		//response.sendRedirect("05-01.login_get.html"); (안 쓴다)//-> 왜 로그인창이 뜨는지 이유를 모른다(이유:바로 로그인창을뜨기때문에 왜 뜨는지 모름)
 		out.println("<h3>"+id+"님 로그인실패</h3><hr>");
-		out.println("<a href='05-01.login_get.html'>다시로그인</a>");
+		out.println("<a href='05-02.login_post.html'>다시로그인</a>");
 	}
 	
 	
