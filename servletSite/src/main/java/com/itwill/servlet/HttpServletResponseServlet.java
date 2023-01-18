@@ -26,6 +26,26 @@ public class HttpServletResponseServlet extends HttpServlet {
 		 */
 		
 		String cmd = request.getParameter("cmd");
+		if (cmd==null || cmd.equals("")) { //cmd가 null이거나 cmd가 empty string이거나
+			/***********case1***************/
+			out.print("<h1>다시 요청하세요</h1><hr>");
+			out.print("<a href='04.HttpServletResponse.html'>04.HttpServletResponse.html</a>");
+			return;	
+		}
+		if (cmd.equals("1")) {
+			out.println("<h3>정상응답</h3><hr>");
+		}else if (cmd.equals("2")) {
+			
+		}else if (cmd.equals("3")) {
+			
+		}else {
+			
+		}
+		
+		
+		
+		
+		
 	}
 
 }
