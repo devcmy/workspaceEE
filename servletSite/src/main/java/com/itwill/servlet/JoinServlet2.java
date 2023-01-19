@@ -129,6 +129,7 @@ public class JoinServlet2 extends HttpServlet {
 		out.println("			<td>직업</td>");
 		out.println("			<td>"+job+"</td>");
 		out.println("		</tr>");
+		
 		out.println("<tr>");
 		
 	
