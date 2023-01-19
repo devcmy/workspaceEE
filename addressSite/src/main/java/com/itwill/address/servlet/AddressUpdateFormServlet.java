@@ -17,16 +17,23 @@ import com.itwill.address.AddressService;
  */
 @WebServlet("/address_update_form.do")
 public class AddressUpdateFormServlet extends HttpServlet {
+	
+	@Override
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			resp.sendError(HttpServletResponse.SC_FORBIDDEN); //get방식으로 하면 403에러가 나게함
+		}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			/*
-			 * http://localhost/addressSite/address_update_form.do?no=1
-			 * http://localhost/addressSite/address_update_form.do?no=2
-			 * http://localhost/addressSite/address_update_form.do?no=3
-			 * http://localhost/addressSite/address_update_form.do?no=4
-			 */
+				/*
+				 요청라인
+				 POST /addressSite/address_update_action.do HTTP/1.1
+				 요청헤더
+				 요청바디
+				 no=1
+				 */
 
 			/*
 			 * 0.요청객체인코딩설정 
@@ -36,7 +43,12 @@ public class AddressUpdateFormServlet extends HttpServlet {
 			 * 4.반환받은 Address객체를 사용해서 클라이언트로 응답(수정폼 보여주기)
 			 */
 		
-
+			request.setCharacterEncoding("UTF-8");
+			String noStr=request.getParameter("no");
+			AddressService addressService = new AddressService();
+			Address address = addressService.findByNo(Integer.parseInt(noStr));
+			
+			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<!DOCTYPE html>");
@@ -54,10 +66,10 @@ public class AddressUpdateFormServlet extends HttpServlet {
 			out.println("		<a href='address_list.do'>[주소록리스트]</a>");
 			out.println("	</div>");
 			out.println("	<form method='post' action='address_update_action.do'>");
-			out.println("		번호----<input type='hidden' name='no' value='12'><br>"); 
-			out.println("		이름----<input type='text' name='name' value='김경호'><br>"); 
-			out.println("		전화번호<input type='text' name='phone' value='123-4568'><br>"); 
-			out.println("		주소----<input type='text' name='address' value='경기도 성남시'><br> ");
+			out.println("		번호----<input type='hidden' name='no' value='"+noStr+"'><br>"); 
+			out.println("		이름----<input type='text' name='name' value='"+address.getName()+"'><br>"); 
+			out.println("		전화번호<input type='text' name='phone' value='"+address.getPhone()+"'><br>"); 
+			out.println("		주소----<input type='text' name='address' value='"+address.getAddress()+"'><br> ");
 			out.println("		<input type='submit' value='주소록수정'>");
 			out.println("		<input type='reset' value='주소록수정폼지우기'>");
 			out.println("	</form>");

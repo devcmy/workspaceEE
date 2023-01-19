@@ -15,6 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/address_insert_form.do")
 public class AddressInsertFormServlet extends HttpServlet {
 	
+	@Override
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+	}
+	
+	
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();

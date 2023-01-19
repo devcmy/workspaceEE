@@ -26,13 +26,26 @@ public class AddressUpdateActionServlet extends HttpServlet {
 		try {
 			/**
 			 * 0.요청객체 encoding설정 
-			 * 1.파라메타 바끼(no,name,phone,address) 
+			 * 1.파라메타 받기(no,name,phone,address) 
 			 * 2.파라메타데이타로 Address객체생성
 			 * 3.AddressService객체생성 
 			 * 4.AddressService.update()메쏘드실행 
-			 * 5.adress_detail.do 로
-			 * redirection
+			 * 5.address_detail.do 로 redirection
 			 */
+			request.setCharacterEncoding("UTF-8");
+			String noStr = request.getParameter("no");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String address = request.getParameter("address");
+			
+			AddressService addressService = new AddressService();
+			Address addStr = new Address(Integer.parseInt(noStr), name, phone, address);
+			addressService.update(addStr);
+			
+			
+			response.sendRedirect("address_detail.do?no="+noStr);
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

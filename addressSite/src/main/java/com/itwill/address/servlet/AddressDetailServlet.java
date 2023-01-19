@@ -40,10 +40,14 @@ public class AddressDetailServlet extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			String noStr=request.getParameter("no");
 			/*
-			 null ==> http://localhost/addressSite/address_detail.do -> null파싱안하면 안뜸.
+			 null ==> http://localhost/addressSite/address_detail.do -> null파싱안하면 안뜸.(바로 실행할경우//클라이언트가 상세보기를 바로 시작할순x)
 			 ""   ==> http://localhost/addressSite/address_detail.do?no=
 			 */
-			
+			if(noStr==null || noStr.equals("")) { //방어코드
+				response.sendRedirect("address_list.do");
+				return;
+				
+			}
 			AddressService addressService = new AddressService();
 			Address address=addressService.findByNo(Integer.parseInt(noStr)); //integer.parseint(문자->정수형)
 			
@@ -63,11 +67,11 @@ public class AddressDetailServlet extends HttpServlet {
 			out.println("	<a href='address_insert_form.do'>[주소록쓰기폼]</a>");
 			out.println("	<a href='address_list.do'>[주소록리스트]</a>");
 			out.println("	<form action='address_update_form.do' method='post' style='display:inline;'>");
-			out.println("		<input type='hidden'   name='no' value='1'>");
+			out.println("		<input type='hidden'   name='no' value='"+address.getNo()+"'>");
 			out.println("		<input type='submit' value='"+address.getName()+"님 주소록수정폼[POST]'>");
 			out.println("	</form>");
 			out.println("	<form action='address_delete_action.do' method='post' style='display:inline;'>");
-			out.println("		<input type='hidden'   name='no' value='1'>");
+			out.println("		<input type='hidden'   name='no' value='"+address.getNo()+"'>");
 			out.println("		<input type='submit' value='"+address.getName()+"님삭제[POST]'>");
 			out.println("	</form>");
 			out.println("</div>");
