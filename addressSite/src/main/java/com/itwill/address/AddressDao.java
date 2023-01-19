@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 /*
  * Dao(Data Access Object) 클래스
  *    - address테이블에 CRUD(Create,Read,Update,Delete)작업을하는
@@ -17,12 +15,11 @@ import java.util.List;
  */
 public class AddressDao {
 	/*
-	 * DataSource객체를 멤버필드로 가짐
-	 * (Connection을 생성하고 해지하는 객체)
+	 * DataSource객체를 멤버필드로 가짐 (Connection을 생성하고 해지하는 객체)
 	 */
 	private DataSource dataSource;
 
-	public AddressDao() throws Exception{
+	public AddressDao() throws Exception {
 		/*
 		 * dataSource멤버필드 초기화
 		 */
@@ -30,7 +27,6 @@ public class AddressDao {
 	}
 
 	public int insert(Address newAddress) throws Exception {
-
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(AddressSQL.ADDRESS_INSERT);
 		pstmt.setString(1, newAddress.getName());
@@ -44,7 +40,6 @@ public class AddressDao {
 	}
 
 	public int update(Address updateAddress) throws Exception {
-
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(AddressSQL.ADDRESS_UPDATE);
 
@@ -60,11 +55,9 @@ public class AddressDao {
 	}
 
 	public int delete(int no) throws Exception {
-
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(AddressSQL.ADDRESS_DELETE);
 		pstmt.setInt(1, no);
-
 		int rowCount = pstmt.executeUpdate();
 		pstmt.close();
 		dataSource.close(con);
@@ -72,9 +65,7 @@ public class AddressDao {
 	}
 
 	public Address findByPrimaryKey(int no) throws Exception {
-
 		Address findAddress = null;
-
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(AddressSQL.ADDRESS_SELECT_BY_NO);
 		pstmt.setInt(1, no);

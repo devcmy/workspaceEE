@@ -2,7 +2,6 @@ package com.itwill.address.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,13 +29,9 @@ public class AddressListServlet extends HttpServlet {
 			 * 1.AddressService객체생성 
 			 * 2.AddressService객체의 findAll() 메쏘드호출
 			 */
-			AddressService addressService = new AddressService();
-			List<Address> addressList = addressService.selectAll();
+			AddressService addressService=new AddressService();
+			List<Address> addressList=addressService.selectAll();
 			
-			
-			
-			
-
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
 
@@ -53,7 +48,7 @@ public class AddressListServlet extends HttpServlet {
 			out.println("</div>");
 			out.println("<div>");
 			out.println("	<ul>");
-			for(Address address : addressList) {
+			for(Address address:addressList) {
 				out.println("<li><a href='address_detail.do?no="+address.getNo()+"'>["+address.getNo()+"]"+address.getName()+"</a></li>");
 			}
 			out.println("	</ul>");

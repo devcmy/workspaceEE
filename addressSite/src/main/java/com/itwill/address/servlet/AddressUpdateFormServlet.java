@@ -18,7 +18,7 @@ import com.itwill.address.AddressService;
 @WebServlet("/address_update_form.do")
 public class AddressUpdateFormServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			/*
