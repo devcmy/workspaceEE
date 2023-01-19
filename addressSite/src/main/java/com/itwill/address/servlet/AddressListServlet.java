@@ -3,12 +3,16 @@ package com.itwill.address.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.itwill.address.Address;
+import com.itwill.address.AddressService;
 
 
 
@@ -24,8 +28,14 @@ public class AddressListServlet extends HttpServlet {
 		try {
 			/*
 			 * 1.AddressService객체생성 
-			 * 2.AddressService객체의 selectAll() 메쏘드호출
+			 * 2.AddressService객체의 findAll() 메쏘드호출
 			 */
+			AddressService addressService = new AddressService();
+			List<Address> addressList = addressService.selectAll();
+			
+			
+			
+			
 
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -43,8 +53,9 @@ public class AddressListServlet extends HttpServlet {
 			out.println("</div>");
 			out.println("<div>");
 			out.println("	<ul>");
-			out.println("		<li><a href='address_detail.do?no=1'>[1]guard</a></li>");
-			out.println("		<li><a href='address_detail.do?no=2'>[2]abcdf</a></li>");
+			for(Address address : addressList) {
+				out.println("<li><a href='address_detail.do?no="+address.getNo()+"'>["+address.getNo()+"]"+address.getName()+"</a></li>");
+			}
 			out.println("	</ul>");
 			out.println("</div>");
 			out.println("</body>");

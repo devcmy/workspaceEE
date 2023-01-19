@@ -26,7 +26,7 @@ public class AddressMainServlet extends HttpServlet {
 		out.println("</head>");
 		out.println("<body>");
 		out.println("<h1>주소록관리메인</h1><hr/>");
-		out.println("<p>접속IP[192.168.15.31]</p>");
+		out.println("<p>접속IP["+request.getRemoteAddr()+"]</p>");
 		out.println("<ul>");
 		out.println("	<li><a href='address_list.do'>주소록리스트</a></li>");
 		out.println("	<li><a href='address_insert_form.do'>주소록쓰기폼</a></li>");
