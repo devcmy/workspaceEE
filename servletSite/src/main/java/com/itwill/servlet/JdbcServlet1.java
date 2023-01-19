@@ -39,6 +39,13 @@ public class JdbcServlet1 extends HttpServlet {
 			
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
+			
+			
+			
+			
+			
+			
+			
 			out.println("<html>");
 			out.println("<head>");
 			out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"com.css\">");
@@ -55,9 +62,9 @@ public class JdbcServlet1 extends HttpServlet {
 			out.println("</tr>");
 			while (rs.next()) {
 				out.println("<tr class=t1>");
-				out.println("<td align=center width=25% height=20>name</td>");
-				out.println("<td align=center width=25% height=20>phone</td>");
-				out.println("<td align=center width=50% height=20>address</td>");
+				out.println("<td align=center width=25% height=20>"+rs.getString("name")+"</td>");
+				out.println("<td align=center width=25% height=20>"+rs.getString("phone")+"</td>");
+				out.println("<td align=center width=50% height=20>"+rs.getString("address")+"</td>");
 				out.println("</tr>");
 			}
 			out.println("</table>");
