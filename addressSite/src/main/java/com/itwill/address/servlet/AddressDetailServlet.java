@@ -37,13 +37,15 @@ public class AddressDetailServlet extends HttpServlet {
 			 * 3.AddressService객체 selectByNo(1) 메쏘드호출
 			 * 4.Address객체 출력
 			 */
-			
+			request.setCharacterEncoding("UTF-8");
 			String noStr=request.getParameter("no");
 			/*
-			 null ==> http://localhost/addressSite/address_detail.do
+			 null ==> http://localhost/addressSite/address_detail.do -> null파싱안하면 안뜸.
 			 ""   ==> http://localhost/addressSite/address_detail.do?no=
 			 */
-		
+			
+			AddressService addressService = new AddressService();
+			Address address=addressService.findByNo(Integer.parseInt(noStr)); //integer.parseint(문자->정수형)
 			
 			
 			response.setContentType("text/html;charset=UTF-8");
@@ -55,25 +57,25 @@ public class AddressDetailServlet extends HttpServlet {
 			out.println("<title>Insert title here</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println("<h1>[김경호님 주소록상세보기]</h1><hr>");
+			out.println("<h1>["+address.getName()+"님 주소록상세보기]</h1><hr>");
 			out.println("<div>");
 			out.println("	<a href='address_main.do'>[메인]</a>");
 			out.println("	<a href='address_insert_form.do'>[주소록쓰기폼]</a>");
 			out.println("	<a href='address_list.do'>[주소록리스트]</a>");
 			out.println("	<form action='address_update_form.do' method='post' style='display:inline;'>");
 			out.println("		<input type='hidden'   name='no' value='1'>");
-			out.println("		<input type='submit' value='김경호님 주소록수정폼[POST]'>");
+			out.println("		<input type='submit' value='"+address.getName()+"님 주소록수정폼[POST]'>");
 			out.println("	</form>");
 			out.println("	<form action='address_delete_action.do' method='post' style='display:inline;'>");
 			out.println("		<input type='hidden'   name='no' value='1'>");
-			out.println("		<input type='submit' value='김경호님삭제[POST]'>");
+			out.println("		<input type='submit' value='"+address.getName()+"님삭제[POST]'>");
 			out.println("	</form>");
 			out.println("</div>");
 			out.println("<p>");
-			out.println("	번호:1<br>");
-			out.println("	이름:김경호<br>");
-			out.println("	전화:123-4568<br>");
-			out.println("	주소:경기도 성남시<br>");
+			out.println("	번호:"+address.getNo()+"<br>");
+			out.println("	이름:"+address.getName()+"<br>");
+			out.println("	전화:"+address.getPhone()+"<br>");
+			out.println("	주소:"+address.getAddress()+"<br>");
 			out.println("</p>");
 			out.println("</body>");
 			out.println("</html>");
