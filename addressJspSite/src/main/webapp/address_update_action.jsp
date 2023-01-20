@@ -16,6 +16,22 @@ GET방식의요청이 들어오면 address_main.jsp 로 redirection
  * redirection
  */
  
+ if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("address_main.jsp");
+		return;
+	}
+ 
+ request.setCharacterEncoding("UTF-8");
+ String noStr=request.getParameter("no");
+ String name = request.getParameter("name");
+ String phone = request.getParameter("phone");
+ String address = request.getParameter("address");
+ 
+ AddressService addressService = new AddressService();
+ Address addStr = new Address(Integer.parseInt(noStr), name,phone,address);
+ addressService.update(addStr);
+ 
+ response.sendRedirect("address_detail.jsp?no="+noStr);
 %>
 
 

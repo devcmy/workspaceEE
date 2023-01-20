@@ -13,6 +13,19 @@ GET방식요청인경우에는 address_main.jsp로 redirection
   4.반환받은 Address객체를 사용해서 클라이언트로 응답(수정폼 보여주기)
  */
  
+ if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("address_main.jsp");
+		return;
+	}
+ 
+ 
+ 
+ request.setCharacterEncoding("UTF-8");
+ String noStr=request.getParameter("no");
+ AddressService addressService = new AddressService();
+ Address address = addressService.findByNo(Integer.parseInt(noStr));
+
+ 
  
 %>    
 <!DOCTYPE html>
@@ -22,7 +35,7 @@ GET방식요청인경우에는 address_main.jsp로 redirection
 <title>Insert title here</title>
 </head>
 <body>
-<h1>[박경호님 주소록 수정폼]</h1><hr>
+<h1>[<%=address.getName()%>님 주소록 수정폼]</h1><hr>
 <hr>
 	<div>
 		<a href='address_main.jsp'>[메인]</a>
@@ -30,10 +43,10 @@ GET방식요청인경우에는 address_main.jsp로 redirection
 		<a href='address_list.jsp'>[주소록리스트]</a>
 	</div>
 	<form method='post' action='address_update_action.jsp'>
-		번호---<input type='hidden' name='no' value='2' ><br>
-		이름----<input type='text' name='name' value='박경호'><br>
-		전화번호<input type='text' name='phone' value='123-4568'><br>
-		주소----<input type='text' name='address' value='경기도 구리시'><br><br>  
+		번호---<input type='hidden' name='no' value='<%=noStr%>' ><br>
+		이름----<input type='text' name='name' value='<%=address.getName()%>'><br>
+		전화번호<input type='text' name='phone' value='<%=address.getPhone() %>'><br>
+		주소----<input type='text' name='address' value='<%=address.getAddress()%>'><br><br>  
 		<input type='submit' value='주소록수정'>
 		<input type='reset' value='주소록수정폼지우기'>
 	</form>

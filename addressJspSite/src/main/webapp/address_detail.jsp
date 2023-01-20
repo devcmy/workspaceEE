@@ -13,6 +13,18 @@
  *  3.AddressService객체 selectByNo(no) 메쏘드호출
  *  4.Address객체 출력
  */
+ 
+ request.setCharacterEncoding("UTF-8");
+ String noStr=request.getParameter("no");
+ 
+ if(noStr==null || noStr.equals("")){
+	 response.sendRedirect("address_list.jsp"); //방어코드
+	 return;
+ }
+ AddressService addressService = new AddressService();
+ Address address = addressService.findByNo(Integer.parseInt(noStr));
+ 
+ 
 %>    
 
     
@@ -25,27 +37,27 @@
 <body>
 
 
-<h1>[박경호 님 주소록상세보기]</h1><hr>
+<h1>[<%=address.getName()%> 님 주소록상세보기]</h1><hr>
 <div>
 	<a href='address_main.jsp'>[메인]</a>
 	<a href='address_insert_form.jsp'>[주소록쓰기폼]</a>
 	<a href='address_list.jsp'>[주소록리스트]</a>
 	
 	<form action="address_update_form.jsp" method="post" style="display: inline;">
-		<input type="hidden" name="no" value="11">
-		<input type="submit" value="박경호님 주소록수정폼[POST]">	
+		<input type="hidden" name="no" value="<%=address.getNo()%>">
+		<input type="submit" value="<%=address.getName() %>님 주소록수정폼[POST]">	
 	</form> 
 	
 	<form action='address_delete_action.jsp' method='post' style='display:inline;'>
-		<input type='hidden' name='no' value='11'>
-		<input type='submit' value='박경호님삭제[POST]'>
+		<input type='hidden' name='no' value='<%=address.getNo()%>'>
+		<input type='submit' value='<%=address.getName() %>님삭제[POST]'>
 	</form>
 </div>
 <p>
-	번호:11<br>
-	이름:박경호<br>
-	전화:123-4568<br>
-	주소:경기도 구리시<br>
+	번호:<%=address.getNo() %><br>
+	이름:<%=address.getName() %><br>
+	전화:<%=address.getPhone() %><br>
+	주소:<%=address.getAddress() %><br>
 </p>
 </body>
 </html>

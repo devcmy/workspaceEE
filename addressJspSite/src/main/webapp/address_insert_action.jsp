@@ -13,6 +13,20 @@
  * 4.address_list.jsp 로 redirection
  */
  
+ request.setCharacterEncoding("UTF-8");
+ String name= request.getParameter("name");
+ String phone=request.getParameter("phone");
+ String address=request.getParameter("address");
+ 
+ Address addStr = new Address(0,name,phone,address);
+ 
+ AddressService addressService = new AddressService();
+ addressService.insert(addStr);
+ 
+ response.sendRedirect("address_list.jsp");
+ 
+ 
+ 
  
  
 %>
