@@ -15,11 +15,6 @@ GET방식요청인경우에는 address_main.jsp로 redirection
  
  
 %>    
-
-
-
-
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,30 +22,20 @@ GET방식요청인경우에는 address_main.jsp로 redirection
 <title>Insert title here</title>
 </head>
 <body>
-
-
-<h1>[박경호 님 주소록상세보기]</h1><hr>
-<div>
-	<a href='address_main.jsp'>[메인]</a>
-	<a href='address_insert_form.jsp'>[주소록쓰기폼]</a>
-	<a href='address_list.jsp'>[주소록리스트]</a>
-	
-	<form action="address_update_form.jsp" method="post" style="display: inline;">
-		<input type="hidden" name="no" value="11">
-		<input type="submit" value="박경호님 주소록수정폼[POST]">	
-	</form> 
-	
-	<form action='address_delete_action.jsp' method='post' style='display:inline;'>
-		<input type='hidden' name='no' value='11'>
-		<input type='submit' value='박경호님삭제[POST]'>
+<h1>[박경호님 주소록 수정폼]</h1><hr>
+<hr>
+	<div>
+		<a href='address_main.jsp'>[메인]</a>
+		<a href='address_insert_form.jsp'>[주소록쓰기폼]</a>
+		<a href='address_list.jsp'>[주소록리스트]</a>
+	</div>
+	<form method='post' action='address_update_action.jsp'>
+		번호---<input type='hidden' name='no' value='2' ><br>
+		이름----<input type='text' name='name' value='박경호'><br>
+		전화번호<input type='text' name='phone' value='123-4568'><br>
+		주소----<input type='text' name='address' value='경기도 구리시'><br><br>  
+		<input type='submit' value='주소록수정'>
+		<input type='reset' value='주소록수정폼지우기'>
 	</form>
-</div>
-<p>
-	번호:11<br>
-	이름:박경호<br>
-	전화:123-4568<br>
-	주소:경기도 구리시<br>
-</p>
 </body>
 </html>
-
