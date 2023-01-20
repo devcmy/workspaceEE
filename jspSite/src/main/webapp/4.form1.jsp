@@ -1,4 +1,4 @@
-
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
 	<br />
 	<br />
 	<br />
-	<h1 align="center">회원가입</h1>
+	<h1 align="center">회원가입[<%= request.getRemoteAddr() %>]</h1>
 	<form action="4.join1.jsp" method="post">
 		<table width="600px" border="1px" align="center">
 			<tr style="height: 40px">
@@ -83,7 +83,7 @@
 					<input type="button" value="눌러주세요"  onclick="alert('버튼클릭');" /> 
 					--> 
 					<!-- image : 이미지 입힌 버튼 모양, 서버로 데이터 전송 -->
-					<input type="image" src="images/join_btn.png" /> 
+					<input type="image" src="images/submit1.png" /> 
 					<!-- submit : 버튼 모양, 서버로 데이터 전송 -->
 					<input type="submit" value="서버로 전송" />
 					<!-- reset : 초기화, 최초 페이지 로딩할 때 상태로 전환 --> 
