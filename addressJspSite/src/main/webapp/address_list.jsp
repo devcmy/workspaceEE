@@ -13,7 +13,7 @@
  * 3.AddressService객체 selectAll() 메쏘드호출
  * 4.List<Address> 리스트 출력
  */
- response.setContentType("UTF-8");
+ //response.setContentType("UTF-8"); content type  2번설정할필요x
  
  
  AddressService addressService = new AddressService();

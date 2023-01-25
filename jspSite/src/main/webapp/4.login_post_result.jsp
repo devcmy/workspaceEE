@@ -5,7 +5,7 @@
 	
 	response.setContentType("text/html;charset=UTF-8");
 	/*
-	 * 1.파라메타바끼
+	 * 1.파라메타받기
 	  	아이디:<input type="text" name="id">
 		패에쓰:<input type="password" name="pass">
 	 */

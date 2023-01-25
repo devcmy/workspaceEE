@@ -13,6 +13,8 @@ GET방식요청인경우에는 address_main.jsp로 redirection
   4.반환받은 Address객체를 사용해서 클라이언트로 응답(수정폼 보여주기)
  */
  
+ 
+ 
  if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("address_main.jsp");
 		return;
