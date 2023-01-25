@@ -54,5 +54,6 @@
 	
 			
 			<br />
+			<%@include file="5-6.directive_included_file.jspf" %>
 </BODY>
 </HTML>
