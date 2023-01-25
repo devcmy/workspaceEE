@@ -4,23 +4,100 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	let name='script_이순신';
+	let msg='script 저는 아직도 3척의 배가 있습니다.';
 	/*
 	 함수정의
 	   - 윈도객체에소속된 함수가된다.
 	 */
+	function head_function(){
+		window.document.write("head_function()"+msg+"<br>");
+	}
+	function hello1(){
+		let name = "local 삼순신";
+		let msg='local 3척밖에 안남았어요~';
+		document.write(name+'님'+msg+" [hello1()]<br>");
+		return;
+	}
+	/*************function argument***********/
+	function hello2(msg){
+		/*
+		메쏘드 파라메타 선언시, let 키워드를 사용안함
+		*/
+		document.write(name+" 님"+ msg+" [hello2(msg)]<br>");
+	}
+	function hello3(name, msg){ //로컬변수이다.
+		document.write(name+" 님"+ msg+" [hello3(name,msg)]<br>");
+		
+	}
+	function hello4(name,msg,count){
+		console.log(name);
+		console.log(msg);
+		console.log(count);
+	if(count === undefined) {
+		count=1;
+	}//완전일치여부 조회는 '=' 3번 써야함	
+		for(let i=0;i<count;i++){
+		document.write(name+" 님"+ msg+" [hello4(name,msg,count)]<br>");
+		}
+		
+	}
+	/*********function return***************/
+	function add(a,b){
+		return a+b;
+	}
+	function sub(a,b){
+		return a-b;
+	}
+	function mul(a,b){
+		return a*b;
+	}
+	function div(a,b){
+		return a/b;
+	}
 	
-</script>
+	function alert(msg){
+		document.write("<i>내가만든경고함수(window.alert(msg))함수를 대체해버림:"+msg+"</i><br>"); //이름이 같으면 window.alert()함수를 대체해버림 -> 쓰지마라.
+	}
+	
+	</script>
 
 </head>
+
+
 <body>
 <h1>자바스크립트함수</h1><hr>
 <div>함수기반언어이다</div>
 <script type="text/javascript">
+//호출은 함수 정의된 후 호출하여야한다.
 	//함수호출
+	window.head_function();
+	//body_end_function();
+	hello1();
+	hello2('뭐하세요~~');
+	hello2('안녕하세요');
+	hello3('김경호','안녕하세요~~~');
+	hello3('제임스','뭐하세요~~~');
+	hello4('choi','새해복많이받으세요!',5);
+	hello4();//값을 안넣으면 undefined가 뜬다.
+	hello4('san','새해복많이 받으세요',2);
+	hello4('ho','누구세요');
+	let result=add(1,2); //return받는 데이터들은 보통 상수로 받아준다(하지만 이번예시는 let으로 선언)
+	document.write('add result:'+result+'<br>');
+	result=sub(1,2); 
+	document.write('sub result:'+result+'<br>');
+	document.write('mul result:'+mul(1,2)+'<br>');
+	document.write('div result:'+div(1,2)+'<br>');
+	window.alert('경고메세지'); //이름이 같으면 기존의window.alert()함수를 대체해버림 -> 쓰지마라.
+	
 	
 </script>
 
 <script type="text/javascript">
+	function body_end_function(){
+		document.write("body_end_function()<br>");
+		
+	}
 	
 </script>
 </body>

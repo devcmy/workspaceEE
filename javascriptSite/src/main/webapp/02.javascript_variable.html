@@ -6,24 +6,74 @@
 <script type="text/javascript">
 /*
 변수선언
-   - var키워드를 사용(let)
+   - let 키워드를 사용(var)
    - 타입을 가지지않는다.
    - 객체멤버변수(attribute,property),멤버메쏘드(function)는 동적생성이가능
    - var로변수선언시 자동으로 window객체의멤버변수로등록
    
 */
-
+	var no=22;
+	let name1='김경호1';
+	let name2='김경호2';
+	let age = 33;
+	let weight=55.69;
+	let married=true;
+	let address=null;
+	let gender;
+	no=99;
+	var no=98; // 에러가 안난다.(var 선언 비추천)
+	//let name1; //에러발생시킴(console에서) //Uncaught SyntaxError: Identifier 'name1' has already been declared 이미 정의되어있다.
+	/*
+	상수
+	*/
+	const id='guard';
+	const irum='김수미';
+	const kor=56;
+	const eng=78;
+	const math=89;
+	const tot=56+78+89;
+	const avg=tot/3;
+	/* Uncaught TypeError: Assignment to constant variable.
+	id='tomato'; */
+	
+	
+	
+	
+	
 </script>
 </head>
 <body>
 <h1>자바스크립트변수</h1><hr>
 
 <script type="text/javascript">
-
+	//consloe.long(window.no); //window의 변수로 넣지마라 (지저분해진다)
+	console.log(no);
+	console.log(name1);
+	console.log(name2);
+	console.log(age);
+	console.log(weight);
+	console.log(married);
+	console.log(address);
+	console.log(gender);
+	console.log(id);
+	console.log(irum);
+	console.log(avg);
 	
 	/*
 	BOM
 	*/
+	window.alert('윈도우 alert 함수 호출'); //경고창이 확인하는 순간까지 실행중단
+	const result = window.confirm('진짜로 삭제할까요?'); //확인 과 취소버튼
+	console.log('result:'+result);
+	window.document.write("<ul>");	
+	window.document.write("<li>no:"+no+"</li>");	
+	window.document.write("<li>name1:"+name1+"</li>");	
+	window.document.write("<li>id:"+id+"</li>");	
+	window.document.write("</ul>");	//body에 기술됨
+	
+	
+	
+	
 	
 	
 </script>
