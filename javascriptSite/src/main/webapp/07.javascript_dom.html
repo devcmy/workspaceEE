@@ -16,11 +16,18 @@
 		let div1E=document.getElementById('div1');
 		let div1Content = div1E.innerHTML; //innerText(tag빼고 가져옴)
 		console.log('div1content:'+div1Content);
+		
 		let name='송혜교';
-	/*	div1E.innerHTML+="<ol>";
-		div1E.innerHTML+="<li>ABC</li>";
-		div1E.innerHTML+="<li>DEF</li>";
-		div1E.innerHTML+="</ol>";  누적해서작성해야함 */
+		/*
+		 template literal(``)을 사용하면 자바스트립트값을출력할수있어요
+		 ex>  
+				let name = '김경호';
+				let msg  = ` ${name}님안녕하세요!!`;
+		*/
+		/*	div1E.innerHTML+="<ol>";
+			div1E.innerHTML+="<li>ABC</li>";
+			div1E.innerHTML+="<li>DEF</li>";
+			div1E.innerHTML+="</ol>";  누적해서작성해야함 */
 		
 		div1E.innerHTML=`
 			<ol>
@@ -34,8 +41,15 @@
 		`; //`(back 키) => line에 관계없이 기술하면 된다. , ${} => template literal "반드시 함수의 실행결과로 값(식) 이어야한다."
 		
 	}
-	var count = 0;
+	let count = 0;
 	function access_img() {
+		
+		
+		count = count%3;
+		count++; //0이라서 처음부터 증가시켜줌
+		let imgE = document.getElementById('img1');
+		imgE.src='penguin'+count+'.gif';
+
 
 	}
 	function form_display() {
