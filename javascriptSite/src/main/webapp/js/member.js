@@ -3,12 +3,7 @@
  */
 
 
-function isSame(v1,v2){
-	if(v1===v2){//type과 값이 모두 일치하면
-		return true;
-	}
-	return false;
-}
+
 
 
 
