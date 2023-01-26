@@ -1,6 +1,18 @@
 /**
  * member.js
  */
+
+
+function isSame(v1,v2){
+	if(v1===v2){//type과 값이 모두 일치하면
+		return true;
+	}
+	return false;
+}
+
+
+
+
 function join_form_validation_submit_button(){
 			/*
 			DOM Tree에있는 form엘레멘트객체에 접근하는방법
@@ -102,7 +114,7 @@ function join_form_validation_submit_button(){
 				f.address.focus();
 				return;
 			}
-			if(f.password.value!==f.repassword.value){
+			if(!isSame(f.password.value,f.repassword.value)){ //같으면 밑에 들어가면 안된다.
 				alert('패스워드 와 패스워드확인을 일치하여야 합니다.');
 				f.password.select();
 				return;
