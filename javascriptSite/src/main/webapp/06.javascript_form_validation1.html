@@ -61,7 +61,9 @@
 				f.password.select();
 				return false;
 			}
-			
+			if(id_check_function()){
+				alert('아이디는 5자 이상, 10자 이하 입니다.');
+			}
 			
 			
 			
@@ -125,7 +127,12 @@
 			f.action='join_ultra_action.jsp';
 			f.submit();
 			
-		}	
+		}
+		
+		
+		
+		
+			
 	
 		
 </script>

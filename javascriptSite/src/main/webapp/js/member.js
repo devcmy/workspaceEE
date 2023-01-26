@@ -70,6 +70,7 @@ function join_form_validation_submit_button(){
 			
 			
 			
+			
 			return true;
 			
 			/*
@@ -112,6 +113,24 @@ function join_form_validation_submit_button(){
 			if(!isSame(f.password.value,f.repassword.value)){ //같으면 밑에 들어가면 안된다.
 				alert('패스워드 와 패스워드확인을 일치하여야 합니다.');
 				f.password.select();
+				return;
+			}
+			
+			if(!isValidId(f.id.value)){
+				alert('아이디를 5자이상 10자이하로 입력하시오.')
+				f.id.select();
+				return;
+			}
+			
+			if(!isStartsWithId(f.id.value)){
+				alert('아이디 첫글자는 영대문자 및 영소문자 만 가능합니다.')
+				f.id.select();
+				return;
+			}
+			
+			if(!isValidIdinclude(f.id.value)){
+				alert('아이디는 영문과 숫자만 가능합니다')
+				f.id.select();
 				return;
 			}
 			
