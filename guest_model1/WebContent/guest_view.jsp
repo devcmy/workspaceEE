@@ -12,7 +12,7 @@
   */
  request.setCharacterEncoding("UTF-8");
  String noStr=request.getParameter("guest_no");
- 
+//integer.parseint가 제대로 받아오는지 확인 
  if(noStr==null || noStr.equals("")){
 	 response.sendRedirect("guest_main.jsp"); //방어코드
 	 return;
