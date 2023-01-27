@@ -15,10 +15,35 @@ public class GuestService {
 			return guestDao.findAll();
 	}
 
+	/*
+	 * 업데이트 service
+	 */
+	public int updateGuest(Guest updateGuest) throws Exception {
+		return guestDao.update(updateGuest);
+	}
 
+	/*
+	 * 생성 service
+	 */
+	public int insertGuest(Guest insertGuest) throws Exception {
+		return guestDao.insert(insertGuest);
+	}
 
-
-
-
-
+	/*
+	 * 삭제 service
+	 */
+	public int deleteGuest(int no) throws Exception {
+		return guestDao.delete(no);
+	}
+	
+	/*
+	 * 상세보기 service
+	 */
+	public Guest selectByNo(int no) throws Exception {
+		return guestDao.findByNo(no);
+	}
+	
+	
+	
+	
 }
