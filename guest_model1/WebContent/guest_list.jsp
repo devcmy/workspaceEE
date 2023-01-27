@@ -5,8 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	GuestService guestService=new GuestService();
-	List<Guest> guestList=guestService.findAll();
+	GuestService guestService = new GuestService();
+	List<Guest> guestList = guestService.findAll();
 %>       
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,9 +26,6 @@
 		<div id="header">
 			<!-- include_common_top.jsp start-->
 			<jsp:include page="include_common_top.jsp"/>
-<h1>
-	<a href="">WEB SAMPLE SITE</a>
-</h1>
 
 			<!-- include_common_top.jsp end-->
 		</div>
@@ -65,11 +62,11 @@
 										<td width=120 align=center bgcolor="E6ECDE">이름</td>
 										<td width=120 align=center bgcolor="E6ECDE">날짜</td>
 									</tr>
-									<%for(Guest guest:guestList){ %>
+									<%for(Guest guest : guestList){ %>
 									<tr>
 										<td width=50 align=center bgcolor="ffffff" height="20"><%=guest.getGuest_no()%></td>
 										<td width=300 bgcolor="ffffff" style="padding-left: 10"><a
-											href="guest_view.jsp?guest_no=43" class="user"><%=guest.getGuest_title()%></a></td>
+											href="guest_view.jsp?guest_no=<%=guest.getGuest_no() %>" class="user"><%=guest.getGuest_title()%></a></td>
 										<td width=120 align=center bgcolor="ffffff"><%=guest.getGuest_name()%></td>
 										<td width=120 align=center bgcolor="ffffff"><%=guest.getGuest_date()%></td>
 									</tr>
