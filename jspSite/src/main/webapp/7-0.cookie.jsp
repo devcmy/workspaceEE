@@ -48,7 +48,7 @@ a.m2:hover {font-size : 10pt; text-decoration : none}
 		잃어버리는 문제가 발생하기 때문이다.<br><br>   
 		
 		<font color="#FF00FF">
-		이런한 문제를 해결(상태정보 유지)하기 위해서 쿠키와 세션이 등장하게 되었다.</font>   
+		이러한 문제를 해결(상태정보 유지)하기 위해서 쿠키와 세션이 등장하게 되었다.</font>   
 		
 		<br><br>
 		</td>
