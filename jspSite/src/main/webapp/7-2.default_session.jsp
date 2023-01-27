@@ -3,6 +3,8 @@
          pageEncoding="UTF-8"
          session="false"
          %>
+         
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,15 +33,19 @@
 	         2.HttpSession객체사용
 	*/  
 	
+	//직접 세션을 생성하는 예제
+	
+	HttpSession session = request.getSession(true); //TRUE면 생성되거나 바인딩되거나, FALSE 면 NULL이다.
+	
 
 %>
 <ol>
-	<li>session객체참조변수:</li>
-	<li>session객체생성여부:</li>
-	<li>session객체세션아이디:</li>
-	<li>session객체생성시간:</li>
-	<li>session객체유효시간:</li>
-	<li>session객체마지막바인딩시간:</li>
+	<li>session객체참조변수:<%=session%></li>
+	<li>session객체생성여부:<%=session.isNew() %></li> <!--  처음 생성됫냐? true-  생성, false- 바인딩 -->
+	<li>session객체세션아이디:<%=session.getId() %></li>
+	<li>session객체생성시간:<%=session.getCreationTime() %></li>
+	<li>session객체유효시간:<%=session.getMaxInactiveInterval() %></li> <!-- default 30분 (1800초) -->
+	<li>session객체마지막바인딩시간:<%=session.getLastAccessedTime() %></li> 
 </ol>
 
 

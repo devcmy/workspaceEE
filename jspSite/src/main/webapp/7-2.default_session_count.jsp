@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" session="true"%>
+	pageEncoding="UTF-8" session="false"%>
 <!-- 
      <<요청시 JESSIONID쿠키존재안할때(최초요청시)>>
          1.JESSIONID쿠키존재여부판단후 JESSIONID쿠키존재하지않으면
@@ -14,23 +14,30 @@
          2.HttpSession객체사용
  -->
 <%
-	
-	
-	
-	
-
-	
+	HttpSession session=request.getSession(true);
+	int count=0;
+	Integer countInt = (Integer)session.getAttribute("count"); //최초요청이면 null임.있을때 가져옴
+	if(countInt==null){                             //session.isnew 쓰면 안됨 (이미생성되어있)
+		//생성된 이후로 한번도 count를 넣지않는 상황
+		//count key의 속성객체(attribute)가 존재하지 않는경우
+		count=0;	
+	}else{
+		//count key의 속성객체(attribute)가 존재하는 경우
+		count=countInt.intValue();
+	}
+	count++;
 	/*
 	세션장바구니객체에 count라는 key로 Integer객체를 저장합니다.
 	세션장바구니객체는 저장데이타를 HashMap으로 관리합니다.
 	*/
+	session.setAttribute("count", new Integer(count));
 	
 	
 	System.out.println("-------------------------------------------------");
-	System.out.println("클라이언트IP                  --->");
-	System.out.println("세션객체참조변수[생성,바인딩] --->");
-	System.out.println("세션객체아이디                --->");
-	System.out.println("세션객체에저장된 카운트값     --->");
+	System.out.println("클라이언트IP                  --->"+request.getRemoteAddr());
+	System.out.println("세션객체참조변수[생성,바인딩] --->"+session);
+	System.out.println("세션객체아이디                --->"+session.getId());
+	System.out.println("세션객체에저장된 카운트값     --->"+session.getAttribute("count"));
 	System.out.println("-------------------------------------------------");
 	
 %>
@@ -44,17 +51,17 @@
 </head>
 <body>
 	<h1>HttpSession객체를 사용한 클라이언트별 요청횟수 카운트</h1>
-	<h3>xxx	님	3 번째 요청입니다.
+	<h3><%=session.getId() %>님	<%=count %> 번째 요청입니다.
 	</h3>
 	<br>
 	<br>
 	<ol>
-		<li>session객체참조변수:</li>
-		<li>session객체생성여부:</li>
-		<li>session객체세션아이디:</li>
-		<li>session객체생성시간:</li>
-		<li>session객체유효시간:</li>
-		<li>session객체마지막바인딩시간:</li>
+	<li>session객체참조변수:<%=session%></li>
+	<li>session객체생성여부:<%=session.isNew() %></li> 
+	<li>session객체세션아이디:<%=session.getId() %></li>
+	<li>session객체생성시간:<%=session.getCreationTime() %></li>
+	<li>session객체유효시간:<%=session.getMaxInactiveInterval() %></li> 
+	<li>session객체마지막바인딩시간:<%=session.getLastAccessedTime() %></li> 
 	</ol>
 </body>
 </html>
