@@ -28,7 +28,7 @@ function isStartsWithId(v1){
 	return false;
 }
 
-let idReg = /^[A-za-z0-9]{5,10}$/g;
+let idReg = /^[A-za-z0-9]{4,9}$/g;
 
 function isValidIdinclude(v1){
 	if(idReg.test(v1) === true){
