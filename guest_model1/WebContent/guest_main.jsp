@@ -18,23 +18,14 @@
 		<!-- header start -->
 		<div id="header">
 			<!-- include_common_top.jsp start-->
-			<h1>
-				<a href=""></a>
-			</h1>
+
 			<!-- include_common_top.jsp end-->
 		</div>
 		<!-- header end -->
 		<!-- navigation start-->
 		<div id="navigation">
 			<!-- include_common_left.jsp start-->
-			<p>
-				<strong>메 뉴</strong>
-			</p>
-			<ul>
-				<li><a href="guest_main.jsp">방명록홈</a></li>
-				<li><a href="guest_list.jsp">방명록리스트</a></li>
-				<li><a href="guest_write_form.jsp">방명록쓰기폼</a></li>
-			</ul>
+			
 			<!-- include_common_left.jsp end-->
 		</div>
 		<!-- navigation end-->
@@ -63,8 +54,7 @@
 		<!--wrapper end-->
 		<div id="footer">
 			<!-- include_common_bottom.jsp start-->
-			<p align="center">Copyright (&copy;) By Kimkyoungho.[김경호] All
-				rights reserved.</p>
+			
 			<!-- include_common_bottom.jsp end-->
 		</div>
 	</div>
