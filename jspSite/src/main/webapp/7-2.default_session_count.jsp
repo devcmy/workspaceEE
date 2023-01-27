@@ -17,7 +17,7 @@
 	HttpSession session=request.getSession(true);
 	int count=0;
 	Integer countInt = (Integer)session.getAttribute("count"); //최초요청이면 null임.있을때 가져옴
-	if(countInt==null){                             //session.isnew 쓰면 안됨 (이미생성되어있)
+	if(countInt==null){                             //session.isnew 쓰면 안됨 (이미생성되어있을수도 있다.)
 		//생성된 이후로 한번도 count를 넣지않는 상황
 		//count key의 속성객체(attribute)가 존재하지 않는경우
 		count=0;	
