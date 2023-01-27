@@ -16,7 +16,7 @@
 					response.sendRedirect("guest_main.jsp");
 					return;
 				}
-				response.setCharacterEncoding("UTF-8");
+				request.setCharacterEncoding("UTF-8");
 				String noStr = request.getParameter("guest_no");
 				GuestService guestService = new GuestService();
 				guestService.deleteGuest(Integer.parseInt(noStr));
