@@ -18,8 +18,6 @@
 	<li>content</li>
 	<li>content</li>
 	<li>content</li>
-	<hr/>
-	<hr/>
 	<li>content</li>
 	<li>content</li>
 	<li>content</li>
