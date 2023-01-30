@@ -11,8 +11,17 @@
 	3  . UserService객체생성
 	4  . UserService.login() 메쏘드실행
 	*/
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("user_login_form.jsp");
+		return;
+	}
+	request.setCharacterEncoding("UTF-8");
+	String userId = request.getParameter("userId");
+	String password = request.getParameter("password");
 	
-	 
+	UserService userService = new UserService();
+	int result = userService.login(userId, password);
+	
 	/*
 	 * 회원로그인
 	 * 
@@ -20,6 +29,16 @@
 	 * 1:패쓰워드 불일치
 	 * 2:로그인성공(세션)
 	 */
+	 
+	 if(result==0){
+		 //0:아이디존재안함
+	 }else if(result==1){
+		 //1:패쓰워드 불일치
+	 }else if(result==2){
+		 //2:로그인성공(세션)
+	 }
+	 
+	 
 	 
 	
 	

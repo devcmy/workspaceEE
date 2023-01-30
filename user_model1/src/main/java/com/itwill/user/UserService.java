@@ -27,16 +27,25 @@ public class UserService {
 			return insertRowCount;
 		}
 	}
-	/*
-	 * 회원로그인
-	 *  0:아이디존재안함
-	 * 	1:패쓰워드 불일치
-	 * 	2:로그인성공(세션)
-	 */
+	
 	public int login(String userId,String password) throws Exception{
 		int result=-1;
 		//1.아이디존재여부
-		
+		User user = userDao.findUser(userId);
+		if(user==null) {
+			//아이디 존재 안함
+			result=0;
+		}else {
+			//아이디 존재함
+			if(user.getPassword().equals(password)) {//웹에서 입력한 비번과 같으면
+				//user.isMatchPassword(password) 이거 사용해도됨. user.java에 있음.
+				//패스워드 일치
+				result=2;
+			}else {
+				//패스워드 불일치
+				result=1;
+			}
+		}
 		return result;
 	}
 	/*
