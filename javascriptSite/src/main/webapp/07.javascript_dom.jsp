@@ -33,7 +33,7 @@
 			<ol>
 				<li>박연진</li>
 				<li>문동은</li>
-				<li>${name}</li>
+				<li>\${name}</li> //escape시켜야한다.
 			</ol>
 			<img src='penguin1.gif'>
 			<img src='penguin2.gif'>
