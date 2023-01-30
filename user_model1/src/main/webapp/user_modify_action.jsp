@@ -36,10 +36,12 @@
 	if(userService.update(updateUser)==0){
 		
 	response.sendRedirect("user_error.jsp");
+	return;
 	
-	}else if(userService.update(updateUser)!=0){
+	}else {
 		
 	response.sendRedirect("user_view.jsp");
+	return;
 	
 	}*/
 	
