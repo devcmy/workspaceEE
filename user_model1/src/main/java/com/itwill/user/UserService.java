@@ -18,9 +18,14 @@ public class UserService {
 		 * -1:아이디중복
 		 *  1:회원가입성공
 		 */
-		return 0;
-		
-		
+		if(userDao.countByUserId(user.getUserId())==1){
+			//아이디 중복
+			return -1;
+		}else {
+			//아이디 중복x -> 회원가입
+			int insertRowCount = userDao.insert(user);
+			return insertRowCount;
+		}
 	}
 	/*
 	 * 회원로그인

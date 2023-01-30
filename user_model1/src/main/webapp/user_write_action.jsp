@@ -14,5 +14,37 @@
 	    5-2. 가입성공이면   user_login_form.jsp 로 redierction
 	*/
 	
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("user_main.jsp");
+		return;
+	}
+	
+	request.setCharacterEncoding("UTF-8");
+	String userId=request.getParameter("userId");
+	String password=request.getParameter("password");
+	String name=request.getParameter("name");
+	String email=request.getParameter("email");
+	
+	User newUser = new User(userId,password,name,email);
+	
+	UserService userService = new UserService();
+	int result = userService.create(newUser);
+	if(result==-1){
+		/*****************아이디중복****************/
+		String msg = userId+" 는 이미 존재하는 아이디입니다.";
+		/*****************case1 script*************/
+		out.print("<script>");
+		out.print("alert('"+msg+"');");
+		out.print("location.href='user_write_form.jsp';");
+		out.print("</script>");
+	}else if(result==1){
+		/****************회원가입성공****************/
+		response.sendRedirect("user_login_form.jsp");
+	}
+	
+	
+
+	
+	
 	
 %>
