@@ -22,6 +22,9 @@ public class EncodingFilter implements Filter {
 			<param-value>UTF-8</param-value>
 		</init-param>
 	   </filter>
+	   
+	   web.xml의 encoding, UTF-8땡겨온다
+	   
 	 */
 	public void init(FilterConfig filterConfig) throws ServletException {
 		this.encoding = filterConfig.getInitParameter("encoding");
@@ -43,7 +46,7 @@ public class EncodingFilter implements Filter {
 		System.out.println("요청시마다 호출 doFilter():"+req.getRequestURI());
 		
 		//요청객체 인코딩 설정
-		req.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding(this.encoding);
 		
 		//클라이언트가 요청하는 리소스(*.jsp나 *.serlvet 등등)로 요청
 		chain.doFilter(request, response); //원래 요청했던곳으로 요청이 진입함.
