@@ -26,9 +26,22 @@
 	
 	
 	UserService userService = new UserService();
+	
 	userService.update(new User(sUserId,password,name,email));
 	response.sendRedirect("user_view.jsp");
 	
+	
+	/*	
+	User updateUser = new User(sUserId,password,name,email);
+	if(userService.update(updateUser)==0){
+		
+	response.sendRedirect("user_error.jsp");
+	
+	}else if(userService.update(updateUser)!=0){
+		
+	response.sendRedirect("user_view.jsp");
+	
+	}*/
 	
 	
 	
