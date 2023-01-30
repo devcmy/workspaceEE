@@ -3,6 +3,7 @@ package com.itwill.user;
  * - 회원관리 업무(비즈니스로직,예외처리,트랜젝션,보안,로깅,인증, 성능 등)을 수행하는 클래스
  * - 웹컴포넌트(서블릿,JSP)에서 직접접근(메쏘드호출)하는 클래스(객체)
  * - Dao를 이용해서 데이타베이스를 조작작업(CRUD)하는 클래스
+ *  - 어떤 web이나 session이나 관련된거 갖고있으면 안됨. 의존성낮추는 행위x
  */
 public class UserService {
 	private UserDao userDao;
@@ -52,20 +53,21 @@ public class UserService {
 	 * 회원상세보기
 	 */
 	public User findUser(String userId)throws Exception{
-		return null;
+		return userDao.findUser(userId);
 	}
 	/*
 	 * 회원수정
 	 */
 	public int update(User user)throws Exception{
-		return 0;
+		
+		return userDao.update(user);
 	}
 	
 	/*
 	 * 회원탈퇴
 	 */
 	public int remove(String userId)throws Exception{
-		return 0;
+		return userDao.delete(userId);
 	}
 	
 }
