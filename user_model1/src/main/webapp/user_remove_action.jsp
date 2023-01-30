@@ -22,8 +22,18 @@
 	userService.remove(sUserId);
 	session.invalidate(); //로그인된 세션 무효화
 	request.getSession(true);
+	
+	
+	/*
+	if(userService.remove(sUserId)==0){
+	response.sendRedirect("user_error.jsp");
+	return;
+	}else{
+		
 	response.sendRedirect("user_main.jsp");
-
+	return;
+	}
+	*/
 		
 	
 	
