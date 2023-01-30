@@ -20,17 +20,30 @@ package com.itwill.datasource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+
+import com.itwill.user.UserDao;
 
 
 
 public class BasicDataSourceExample {
 	public static void main(String[] args) throws Exception {
 		
+		BasicDataSource basicDataSource=new BasicDataSource();
+		Properties properties = new Properties();
+		properties.load(UserDao.class.getResourceAsStream("/jdbc.properties"));
+		basicDataSource.setDriverClassName(properties.getProperty("driverClassName"));
+		basicDataSource.setUrl(properties.getProperty("url"));
+		basicDataSource.setUsername(properties.getProperty("username"));
+		basicDataSource.setPassword(properties.getProperty("password"));
 		/******************** << javax.sql.DataSource >> **************************/
-		
+		DataSource dataSource = basicDataSource; //자바에서 쓰여지는 코드
+		Connection con = dataSource.getConnection(); //conntection 오는지 테스트
+		System.out.println(con);
 		/************************************************************************/
 		
 	}
