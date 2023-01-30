@@ -17,7 +17,7 @@
 		response.sendRedirect("user_main.jsp");
 		return;
 	}
-	request.setCharacterEncoding("UTF-8");
+	//request.setCharacterEncoding("UTF-8");
 	UserService userService = new UserService();
 	userService.remove(sUserId);
 	session.invalidate(); //로그인된 세션 무효화
