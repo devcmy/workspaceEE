@@ -33,7 +33,7 @@ String pageno=request.getParameter("pageno");
 if(pageno==null||pageno.equals("")){
 	pageno="1";
 }	
-
+//pageno가 없으면 default값 ->1
 //게시물조회
 
 BoardListPageMakerDto boardListPage 
@@ -141,32 +141,27 @@ BoardListPageMakerDto boardListPage
 								<tr>
 									<td align="center">
 							     
-										 <%if(boardListPage.pageMaker.getPrevGroupStartPage()>0) {%>    
-										    <a href="./board_list.jsp?pageno=1">◀◀</a>&nbsp;
-										 <%}%>
-										 <%if(boardListPage.pageMaker.getPrevGroupStartPage()>0) {%>    
-											<a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getPrevGroupStartPage()%>">◀</a>&nbsp;&nbsp;
+										
+										 <%if(boardListPage.pageMaker.getPrevPage()>0) {%>    
+											<a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getPrevPage()%>">◀</a>&nbsp;&nbsp;
 										 <%}%>
 										
 										<%
 											for (int i = boardListPage.pageMaker.getBlockBegin(); i <= boardListPage.pageMaker.getBlockEnd(); i++) {
 										 	if (boardListPage.pageMaker.getCurPage() == i) {
 										%>
-										 <font color='blue'><strong><%=i%></strong></font>&nbsp;
+										 <font color='red'><strong><%=i%></strong></font>&nbsp;
 										<%} else {%>
 										<a href="./board_list.jsp?pageno=<%=i%>"><strong><%=i%></strong></a>&nbsp;
 										<%
 										   }
 										  }%>
 										  
-										  
-										 <%if(boardListPage.pageMaker.getNextGroupStartPage()< boardListPage.pageMaker.getTotPage()){%>
-										  <a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getNextGroupStartPage()%>">▶&nbsp;</a>
+										  <!--  마지막페이지제외하고 다음페이지 표시마크하는법 -->
+										 <%if(boardListPage.pageMaker.getNextPage()<= boardListPage.pageMaker.getTotPage()){%>
+										  <a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getNextPage()%>">▶&nbsp;</a>
 										 <%}%>
-										 <%if(boardListPage.pageMaker.getNextGroupStartPage()< boardListPage.pageMaker.getTotPage()){%>
-										<a
-										href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getTotPage()%>">▶▶</a>&nbsp;
-										 <%}%>
+										
 									</td>
 								</tr>
 							</table> <!-- button -->

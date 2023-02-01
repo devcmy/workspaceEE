@@ -59,11 +59,11 @@ public class BoardService {
 	 * 게시물리스트
 	 */
 	public BoardListPageMakerDto findBoardList(int currentPage) throws Exception{
-		//1.전체글의 갯수
+		//1.전체글의 갯수(총 건수 조회)
 		int totalRecordCount = boardDao.getBoardCount();
 		
 		//2.paging계산(PageMaker 유틸클래스)
-		PageMaker pageMaker=new PageMaker(totalRecordCount,currentPage);
+		PageMaker pageMaker=new PageMaker(totalRecordCount,currentPage); //return값이 있어야 뿌려지는게 가능하다.
 	
 		//3.게시물데이타 얻기
 		List<Board> boardList=

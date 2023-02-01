@@ -2,9 +2,9 @@ package com.itwill.board.util;
 
 public class PageMaker {
 	// 페이지당 게시물 수
-	public static final int PAGE_SCALE = 20;
+	public static final int PAGE_SCALE = 10;
 	// 화면당 페이지 수
-	public static final int BLOCK_SCALE = 15;
+	public static final int BLOCK_SCALE = 10;
 	private int totCount;  //전체게시물수
 	private int curPage; // 현재 페이지
 	private int prevPage; // 이전 페이지
@@ -24,24 +24,24 @@ public class PageMaker {
 	// [이전] 41 42 43 44 45 46 47 48 49 50 <- blockEnd [다음]
 	private int blockEnd; // 현재 페이지 블록의 끝번호
 	// 생성자
+	
 	// PageMaker(게시물 갯수, 현재 페이지 번호)
-
 	public PageMaker(int count, int curPage) {
 		curBlock = 1; // 현재 페이지 블록 번호
-		this.totCount=count;
+		this.totCount=count; //count들어오면 전역변수 totCount에 보관
 		setTotPage();// 전체 페이지 갯수 계산
-		if (curPage > totPage) {
-			// 현재페이지가 전체페이지보다크면 전체페이지를현재페이지로설정
+		if (curPage > totPage) { //this.totPage
+			// 현재페이지가 전체페이지보다크면 전체페이지를현재페이지로설정(비정상적인 방법, 57page가마지막인데, 예를들어 1000page로 직접입력하는경우 막아줌)
 			this.curPage = totPage;
-		} else if (curPage < 0) {
+		} else if (curPage < 0) { //?pageno=-90으로 입력하는 경우(get방식으로 입력해서 방어하는것)
 			// 현재페이지가 음수이면 현재페이지를 1로설정
 			this.curPage = 1;
 		} else {
 			this.curPage = curPage; // 현재 페이지 설정
 		}
 
-		setPageRange();
-		setTotBlock(count); // 전체 페이지 블록 갯수 계산
+		setPageRange(); //한 페이지에 보일 게시글의 갯수 범위 계산하는 메쏘드
+		//setTotBlock(count); // 전체 페이지 블록 갯수 계산
 		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
 		System.out.println();
 
@@ -66,28 +66,31 @@ public class PageMaker {
 	}
 
 	public void setTotPage() {
-		// Math.ceil(실수) 올림 처리
+		// Math.ceil(실수) 올림 처리 (현재 수보다 가장 가까운 정수로 올림 56.3->57 page)
 		totPage = (int) Math.ceil(this.totCount * 1.0 / PAGE_SCALE);
 	}
 
-	public void setPageRange() {
+	public void setPageRange() { //한 페이지에 보일 게시글의 갯수 범위 계산하는 메쏘드
 		// WHERE rn BETWEEN #{start} AND #{end}
 		// 시작번호 = (현재페이지-1)*페이지당 게시물수 +1
 		pageBegin = (curPage - 1) * PAGE_SCALE + 1;
 		// 끝번호 = 시작번호+페이지당 게시물수 -1
 		pageEnd = pageBegin + PAGE_SCALE - 1;
+		if(pageEnd>totCount) {
+			pageEnd=totCount;
+		}
 	}
 
-	// 페이지 블록의 갯수 계산(총 91페이지이고 화면당 페이지 수10개이면 10개의 블록)
+	// 페이지 블록의 갯수 계산(총 91페이지이고 화면당 페이지 수10개이면 10개의 블록) -> 10개의 블록으로 구성
 	public void setTotBlock(int count) {
 		// 전체 페이지 갯수(91) / 화면당 페이지 수(10)
 		// 91 / 10 => 9.1 => 10개
-		totBlock = (int) Math.ceil(count / BLOCK_SCALE);
+		totBlock = (int) Math.ceil((double)count / BLOCK_SCALE); //double로 캐스팅 안하면, 실수값이 안나옴
 	}
 
 	public void setBlockRange() {
 		// *현재 페이지가 몇번째 페이지 블록에 속하는지 계산
-		curBlock = (int) Math.ceil((curPage - 1) / BLOCK_SCALE) + 1;
+		curBlock = (int) Math.ceil((curPage - 1) / BLOCK_SCALE) + 1; //1페이지부터 10페이지 까지는 0이 나오고 +1 해서 -> 1블럭이 됨
 		// *현재 페이지 블록의 시작, 끝 번호 계산
 		blockBegin = (curBlock - 1) * BLOCK_SCALE + 1;
 		// 페이지 블록의 끝번호
@@ -98,10 +101,9 @@ public class PageMaker {
 		// *이전을 눌렀을 때 이동할 페이지 번호
 		prevPage = curPage - 1;
 		// *다음을 눌렀을 때 이동할 페이지 번호
-		nextPage = curPage + 1;
+		nextPage = curPage+1;
 		// 마지막 페이지가 범위를 초과하지 않도록 처리
-		if (nextPage >= totPage)
-			nextPage = totPage;
+		
 		/***********************************************/
 		// 이전다음 화면그룹의 시작페이지와 끝페이지
 		prevGroupStartPage = blockBegin - BLOCK_SCALE;
