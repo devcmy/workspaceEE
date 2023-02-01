@@ -11,7 +11,7 @@
 		if (t.length() > 15) {
 			//t = t.substring(0,15);
 			//t = t+"...";
-			t = String.format("%s...", t.substring(0, 15));
+			t = String.format("%s...", t.substring(0, 15)); //제목길이 길어지면 ...으로 축약
 		}
 		//답글공백삽입
 		

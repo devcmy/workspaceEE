@@ -11,12 +11,12 @@ from board order by groupno desc,step asc;
 - ROWNUM은 쿼리 내에서 사용 가능한 (실제 컬럼이 아닌) 가상 컬럼(pseudo column)입니다.
 - ROWNUM에는 숫자 1, 2, 3, 4, ... N의 값이 할당됩니다.
    여기서 N 은 ROWNUM과 함께 사용하는 로우의 수를 의미합니다.
-- ROWNUM의 값은 로우에 영구적으로 할당되지 않습니다.
+- ROWNUM의 값은 로우에 영구적으로 할당되지 않습니다. (select 될때 부여됨)
    테이블의 로우는 숫자와 연계되어 참조될 수 없습니다.
    따라서 테이블에서 "row 5"를 요청할 수 있는 방법은 없습니다.
    "row 5"라는 것은 존재하지 않기 때문입니다.
 - ROWNUM 값은 쿼리의 조건절이 처리되고 난 이후,
-   그리고 sort, aggregation이 수행되기 이전에 할당됩니다.
+   그리고 sort, aggregation이 수행되기 이전에 할당됩니다.(정렬되기 이전에 할당됨)
    또 ROWNUM 값은 할당된 이후에만 증가(increment) 됩니다.
    따라서 아래 쿼리는 로우를 반환하지 않습니다.
    ex>select rownum,emp.* from emp where rownum > 1;
@@ -32,8 +32,11 @@ from board order by groupno desc,step asc;
 	6. ORDER BY 조건이 적용됩니다.
 */
 -----------rownum--------------
+select rownum, board.* from board;
+
 
 SELECT rownum,board.* FROM board ORDER BY groupno DESC,step ASC;
+--rownum먼저, 부여되고 정렬됨
 
 
 
@@ -42,7 +45,7 @@ SELECT rownum idx, s.*  FROM
 				( SELECT * FROM board
 					ORDER BY groupno DESC,step ASC
 				) s ;
-				
+				--정렬된 테이블로 rownum을 부여함.
 
 SELECT rownum idx, s.*  FROM
 				( SELECT * FROM board
