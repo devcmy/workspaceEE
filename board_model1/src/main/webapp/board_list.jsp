@@ -1,3 +1,4 @@
+<%@page import="com.itwill.board.util.PageMaker"%>
 <%@page import="com.itwill.board.BoardListPageMakerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -140,15 +141,21 @@ BoardListPageMakerDto boardListPage
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align="center">
-							     
+							     		
+							     		
 										
+										 <%if(boardListPage.pageMaker.getCurBlock()>1) {%>    
+											<a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getBlockBegin()-PageMaker.BLOCK_SCALE%>">◀◀</a>&nbsp;&nbsp;
+										 <%}%>
+										 
 										 <%if(boardListPage.pageMaker.getPrevPage()>0) {%>    
 											<a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getPrevPage()%>">◀</a>&nbsp;&nbsp;
 										 <%}%>
 										
 										<%
 											for (int i = boardListPage.pageMaker.getBlockBegin(); i <= boardListPage.pageMaker.getBlockEnd(); i++) {
-										 	if (boardListPage.pageMaker.getCurPage() == i) {
+										 
+												if (boardListPage.pageMaker.getCurPage() == i) {
 										%>
 										 <font color='red'><strong><%=i%></strong></font>&nbsp;
 										<%} else {%>
@@ -161,6 +168,16 @@ BoardListPageMakerDto boardListPage
 										 <%if(boardListPage.pageMaker.getNextPage()<= boardListPage.pageMaker.getTotPage()){%>
 										  <a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getNextPage()%>">▶&nbsp;</a>
 										 <%}%>
+										 
+										 <%if(boardListPage.pageMaker.getTotBlock() > boardListPage.pageMaker.getCurBlock()){%>
+										  <a href="./board_list.jsp?pageno=<%=boardListPage.pageMaker.getBlockBegin()+PageMaker.BLOCK_SCALE%>">▶▶&nbsp;</a>
+										 <%}%>
+										
+										
+										
+										
+										
+										
 										
 									</td>
 								</tr>

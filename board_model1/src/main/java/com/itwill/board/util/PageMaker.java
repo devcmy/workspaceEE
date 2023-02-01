@@ -41,7 +41,7 @@ public class PageMaker {
 		}
 
 		setPageRange(); //한 페이지에 보일 게시글의 갯수 범위 계산하는 메쏘드
-		//setTotBlock(count); // 전체 페이지 블록 갯수 계산
+		setTotBlock(this.totPage); // 전체 페이지 블록 갯수 계산
 		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
 		System.out.println();
 
@@ -82,10 +82,10 @@ public class PageMaker {
 	}
 
 	// 페이지 블록의 갯수 계산(총 91페이지이고 화면당 페이지 수10개이면 10개의 블록) -> 10개의 블록으로 구성
-	public void setTotBlock(int count) {
+	public void setTotBlock(int page) {
 		// 전체 페이지 갯수(91) / 화면당 페이지 수(10)
 		// 91 / 10 => 9.1 => 10개
-		totBlock = (int) Math.ceil((double)count / BLOCK_SCALE); //double로 캐스팅 안하면, 실수값이 안나옴
+		totBlock = (int) Math.ceil(page*1.0 / BLOCK_SCALE); 
 	}
 
 	public void setBlockRange() {
