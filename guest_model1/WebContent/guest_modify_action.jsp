@@ -18,7 +18,7 @@
 				return;
 			}
 			
-			request.setCharacterEncoding("UTF-8");
+			//request.setCharacterEncoding("UTF-8");
 			String noStr = request.getParameter("guest_no");
 			String name = request.getParameter("guest_name");
 			String email = request.getParameter("guest_email");

@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
  <%
  /*
-  * 0.요청객체encoding설정
+  * 0.요청객체encoding설정 -> 필터
   * 1.gust_no 파라메타받기
   * 2.GuestService객체생성
   * 3.GuestService객체 selectByNo(guest_no) 메쏘드호출
@@ -12,14 +12,34 @@
   */
   
   String guest_no = request.getParameter("guest_no");
- if(guest_no==null || guest_no.equals("")) {
-		response.sendRedirect("guest_main.jsp");
+ if(guest_no==null || guest_no.equals("")) { //앞에 null check 먼저
+//		response.sendRedirect("guest_main.jsp");
+ 		response.sendRedirect(request.getContextPath()); //->웰컴파일의 contextpath로 redirect한다.
 		return;
 	}
- response.setCharacterEncoding("UTF-8");
- GuestService guestService = new GuestService();
- Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
-  
+ Guest guest=null; //로컬변수라서 에러가 뜨기때문에 try밖으로 빼줘야한다.
+ 
+ //response.setCharacterEncoding("UTF-8");
+ try{
+	 GuestService guestService = new GuestService();
+	 guest = guestService.selectByNo(Integer.parseInt(guest_no));
+	 if(guest==null){
+		throw new NumberFormatException("guest가 null");		 
+	 }	
+ }catch(NumberFormatException e){ //이상한 "헤헤헤"로 들어오는 경우
+	 e.printStackTrace();
+ 	/**********case1(redirect)*************/
+ 	response.sendRedirect("guest_list.jsp");
+	/**********case2(script)*************/
+	out.println("<script>");
+	out.println("alert('존재하지 않는 게시물입니다.');");
+	out.println("location.href='guest_list.jsp';");
+	out.println("</script>");
+	return;
+ }catch(Exception e){ //없는 숫자
+	 e.printStackTrace();
+	 	response.sendRedirect("guest_error.jsp");
+ }
   
  
  %>   
@@ -56,7 +76,7 @@
 		<div id="wrapper">
 
 
-
+     
 
 			<div id="content">
 				<table border=0 cellpadding=0 cellspacing=0>
@@ -101,7 +121,11 @@
 									<tr>
 										<td width=100 align=center bgcolor="E6ECDE" height="110">내용</td>
 										<td width=490 bgcolor="ffffff" align="left"
-											style="padding-left: 10px"><%=guest.getGuest_content() %></td>
+											style="padding-left: 10px"><%=guest.getGuest_content()
+													.replace("<", "&lt;")
+													.replace(">","&gt;")  
+													.replace("\n", "<br>")%></td>
+													<!-- 엔터키 사용시, <br>로 줄내려줌 -->
 									</tr>
 								</table>
 							</form> <br />

@@ -1,4 +1,4 @@
-<%@page import="com.itwill.guest.Guest"%>
+	<%@page import="com.itwill.guest.Guest"%>
 <%@page import="com.itwill.guest.GuestService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -128,8 +128,8 @@
 							<td width=100 align=center bgcolor="E6ECDE" height="22">내용</td>
 							<td align="left" width=490 bgcolor="ffffff"
 								style="padding-left: 10px"><textarea wrap="soft"
-									style="width: 240px" rows="10" name="guest_content"><%=guest.getGuest_content() %></textarea>
-
+									style="width: 240px" rows="10" name="guest_content"><%=guest.getGuest_content()%></textarea>
+																						
 							</td>
 						</tr>
 					</table>
