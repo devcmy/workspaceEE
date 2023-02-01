@@ -28,8 +28,7 @@ public class EncodingFilter implements Filter {
 	 */
 	public void init(FilterConfig filterConfig) throws ServletException {
 		this.encoding = filterConfig.getInitParameter("encoding");
-		System.out.println("생성직후 단한번호출 init(): encoding parameter-->"
-					+ encoding);
+		//System.out.println("생성직후 단한번호출 init(): encoding parameter-->"+ encoding);
 	}
 	
 
@@ -43,7 +42,7 @@ public class EncodingFilter implements Filter {
 		throws IOException, ServletException {
 		
 		HttpServletRequest req=(HttpServletRequest)request;
-		System.out.println("요청시마다 호출 doFilter():"+req.getRequestURI());
+		//System.out.println("요청시마다 호출 doFilter():"+req.getRequestURI());
 		
 		//요청객체 인코딩 설정
 		req.setCharacterEncoding(this.encoding);
