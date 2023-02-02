@@ -73,7 +73,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		int count = 0;
 		try {
-			// 댓글을 작성할 대상글(원글)의 정보를 조회
+			// 답글을 작성할 대상글(원글)의 정보를 조회
 			Board temp = this.findBoard(board.getBoardNo());
 
 			// 영향을 받는 기존 글들의 논리적인 순서 번호 변경
@@ -85,7 +85,7 @@ public class BoardDao {
 			pstmt.executeUpdate();
 			pstmt.close();
 
-			// 댓글 삽입
+			// 답글 삽입
 			sql = "INSERT INTO board " + "(boardno, title, writer, content, " + "groupno, step, depth) "
 					+ "VALUES (board_sequence.nextVal, ?, ?, ?," + "?, ?, ?)";
 			pstmt = con.prepareStatement(sql.toString());

@@ -13,7 +13,7 @@
 		
 	}
 	if(boardno==null){
-		//목록으로이동
+		//목록으로이동(방어코드)
 		response.sendRedirect("board_list.jsp?pageno="+pageno);
 		return;
 	}
