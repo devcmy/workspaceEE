@@ -47,12 +47,7 @@ SELECT rownum idx, s.*  FROM
 				) s ;
 				--정렬된 테이블로 rownum을 부여함.
 
-SELECT rownum idx, s.*  FROM
-				( SELECT * FROM board
-					ORDER BY groupno DESC,step ASC
-				) s
-				where rownum >= 71 and rownum <= 80;
-				
+                --정렬된 테이블로 rownum을 부여한 테이블에 where 조건을 준다.				
 
 SELECT  ss.* FROM
 		( SELECT rownum idx, s.*  FROM
@@ -67,7 +62,7 @@ SELECT ss.* FROM
 					ORDER BY groupno DESC,step ASC
 				) s
 		 ) ss
-WHERE ss.idx >= 71 AND ss.idx <= 80 ;
+WHERE ss.idx >= 71 AND ss.idx <= 80 ; --인라인뷰 2번줘서 해결 1)정렬되고 -> 2)rownum부여되고(반드시  alias줘야함)
 -----------------------------------
 --게시판리스트 페이지
 SELECT * FROM

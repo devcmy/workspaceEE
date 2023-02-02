@@ -44,7 +44,7 @@ insert into board(boardno,title,writer,content,groupno,step,depth)
     3. step    : 현재글의 step  + 1
     4. depth   : 현재글의 depth + 1
  */
--- update 현재글과 같은그룹번호들중에서현재글의 step보다큰 step을가진 게시물들의 step을 1씩 증가시킨다.
+-- update 현재글과 같은그룹번호들중에서 현재글의 step보다 큰 step을가진 게시물들의 step을 1씩 증가시킨다.
 update board set step=step+1 where step > 1 and groupno=564;
 -- insert
 insert into board(boardno,title,writer,content,groupno,step,depth) 
