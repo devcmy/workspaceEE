@@ -76,7 +76,7 @@ public class BoardDao {
 			// 답글을 작성할 대상글(원글)의 정보를 조회
 			Board temp = this.findBoard(board.getBoardNo());
 
-			// 영향을 받는 기존 글들의 논리적인 순서 번호 변경
+			// 영향을 받는 기존 글들의 논리적인 순서 번호 변경(step을 1씩 키우는(글을 뒤아래로 미는 sql))
 			con = dataSource.getConnection();
 			String sql = "UPDATE board " + "SET step = step + 1 " + "WHERE step > ? AND groupno = ?";
 			pstmt = con.prepareStatement(sql.toString());
@@ -92,9 +92,9 @@ public class BoardDao {
 			pstmt.setString(1, board.getTitle());// 제목
 			pstmt.setString(2, board.getWriter());// 작성자
 			pstmt.setString(3, board.getContent());// 내용
-			pstmt.setInt(4, temp.getGroupNo());// group no
-			pstmt.setInt(5, temp.getStep() + 1);// step
-			pstmt.setInt(6, temp.getDepth() + 1);// depth
+			pstmt.setInt(4, temp.getGroupNo());// 원글의 group no
+			pstmt.setInt(5, temp.getStep() + 1);// 원글의 step
+			pstmt.setInt(6, temp.getDepth() + 1);// 원글의 depth
 
 			count = pstmt.executeUpdate();
 	

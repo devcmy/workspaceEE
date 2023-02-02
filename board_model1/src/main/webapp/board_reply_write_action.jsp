@@ -6,7 +6,7 @@
 	//Board객체를 생성하고 입력된데이타를 읽어서 객체에저장
 	Board board=new Board();
 	/*
-	원글boardno
+	원글boardno 를 parameter로 받고, 답글 board에서 boardno로 세팅함.
 	*/
 	board.setBoardNo(
 			Integer.parseInt(request.getParameter("boardno")));
