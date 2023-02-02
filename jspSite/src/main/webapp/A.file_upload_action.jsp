@@ -36,7 +36,7 @@
 <hr/>
 <ul>
 <li>application.getRealPath("") : <%=application.getRealPath("") %></li>
-<li>name:xxx</li>
-<li>fileone:file1</li>
-<li>filetwo:file2</li>
+<li>name:<%=multipartRequest.getParameter("name") %></li>
+<li>fileone:<%=multipartRequest.getFilesystemName("fileone") %></li>
+<li>filetwo:<%=multipartRequest.getFilesystemName("filetwo") %></li>
 </ul>
