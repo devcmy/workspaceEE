@@ -67,6 +67,21 @@ public class UserService {
 	public int remove(String userId)throws Exception{
 		return userDao.remove(userId);
 	}
+	/*
+	 * 아이디중복체크 
+	 */
+	public boolean isDuplicateId(String userId) throws Exception {
+		boolean isExist=userDao.existedUser(userId);
+		if(isExist) {
+			return true;
+		}else {
+			return false;
+		}
+	
+	}
+	
+	
+	
 	
 }
 
