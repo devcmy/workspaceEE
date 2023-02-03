@@ -53,10 +53,10 @@
 		f.submit();
 	}
 	/*
-	아이디중복체크
+	아이디중복체크를 위해 새로운 윈도우를 띄운다.
 	*/
 	function openIdCheck(){
-		
+		window.open('user_id_check_form.jsp');
 	}
 	
 	
