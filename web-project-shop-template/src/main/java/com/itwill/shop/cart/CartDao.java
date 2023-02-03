@@ -146,6 +146,8 @@ public class CartDao {
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(CartSQL.CART_UPDATE_BY_CART_NO);
+			
+			
 			pstmt.setInt(1, cart_qty);
 			pstmt.setInt(2, cart_no);
 			rowCount = pstmt.executeUpdate();

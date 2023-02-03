@@ -16,6 +16,16 @@ insert into product values(product_p_no_SEQ.nextval, '사모예드', 800000, 'sa
 
 
 /**********************cart insert************************/
+--guard1님이 1번 제품 2개, 3번제품 1개, 7번제품 3개 담기
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',1,2);
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',3,1);
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',7,3);
+--guard2님이 1번제품 2개, 3번제품 1개 제품담기
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',1,2);
+insert into cart(cart_no,userId,p_no,cart_qty) values(cart_cart_no_seq.nextval,'guard1',3,1);
+
+
+
 insert into cart(cart_no,userId,p_no,cart_qty) values (cart_cart_no_SEQ.nextval,'guard1',1,2);
 insert into cart(cart_no,userId,p_no,cart_qty) 
 values
