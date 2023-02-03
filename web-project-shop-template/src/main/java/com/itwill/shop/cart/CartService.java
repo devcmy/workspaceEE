@@ -17,7 +17,7 @@ public class CartService {
 			return cartDao.insert(sUserId, p_no, cart_qty);
 		}
 	}
-	public int addCart(Cart cart)throws Exception {
+	public int addCart(Cart cart)throws Exception { //해당제품있으면 update , 없으면 insert 이용
 		if(cartDao.countByProductNo(cart.getUserid(),cart.getProduct().getP_no()) > 0) {
 			return cartDao.updateByProductNo(cart);
 		}else {
