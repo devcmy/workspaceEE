@@ -3,11 +3,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>쇼핑몰</title>
+<title>게시판</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
-<link rel=stylesheet href="css/menu.css" type="text/css"> 
-<link rel=stylesheet href="css/shop.css" type="text/css"> 
+<link rel=stylesheet href="css/board.css" type="text/css">
  
 <style type="text/css" media="screen">
 </style>
@@ -26,7 +25,7 @@
 		<!-- navigation start-->
 		<div id="navigation">
 			<!-- include_common_left.jsp start-->
-			<jsp:include page="include_common_left.jsp"/>
+		<jsp:include page="include_common_left.jsp"/>
 			<!-- include_common_left.jsp end-->
 		</div>
 		<!-- navigation end-->
@@ -53,9 +52,9 @@
 		</div>
 		<!--wrapper end-->
 		<div id="footer">
-			<!-- include_common_bottom.jsp start-->
-			<jsp:include page="include_common_bottom.jsp"/>
-			<!-- include_common_bottom.jsp end-->
+				<!-- include_common_bottom.jsp start-->
+				<jsp:include page="include_common_bottom.jsp"/>
+			    <!-- include_common_bottom.jsp end-->
 		</div>
 	</div>
 	<!--container end-->
