@@ -56,12 +56,13 @@
 	아이디중복체크를 위해 새로운 윈도우를 띄운다.
 	*/
 	function openIdCheck(){
-		window.open('user_id_check_form.jsp');
+		let idCheckWindow=
+			window.open('user_id_check_form.jsp','checkForm','width=430,height=200');
 	}
 	
 	
 	
-</script>
+</script>        
 </head>
 <body bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
 	marginwidth=0 marginheight=0>
