@@ -4,15 +4,21 @@ import java.sql.Date;
 
 import com.itwill.shop.order.Order;
 import com.itwill.shop.order.OrderDao;
+import com.itwill.shop.order.OrderItem;
+import com.itwill.shop.product.Product;
 
 public class OrderDaoTestMain {
 
 	public static void main(String[] args) throws Exception {
 		OrderDao orderDao = new OrderDao();
-		Order jumun = new Order(0, "설명2", new Date(0), 10000, "cmy1");
-		int newJumun =orderDao.insert(jumun);
-		System.out.println(newJumun);
-		System.out.println(orderDao.findOrderByUserId("cmy1"));
+		
+		//orderDao test 하자~!
+		System.out.println(orderDao.findOrderByUserId("cmy0"));
+		System.out.println(orderDao.findOrderWithOrderItemByUserId("cmy0"));
+		
+		orderDao.deleteByUserId("cmy0");
+		
+		
 		
 		
 		
