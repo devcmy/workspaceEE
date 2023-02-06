@@ -17,7 +17,7 @@ insert into product values(product_p_no_SEQ.nextval, '인터라킹 서클 체인
 
 /**********************cart insert************************/
 insert into cart(cart_no,userid,p_no,cart_qty) values (cart_cart_no_SEQ.nextval,'cmy0',1,1);
-
+    
 
 /**********************orders insert************************/
 insert into orders(o_no,o_desc,o_date,o_price,userid) values (orders_o_no_SEQ.nextval,'T1링외1종',sysdate,3960000,'cmy0');

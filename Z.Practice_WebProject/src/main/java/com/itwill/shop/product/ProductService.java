@@ -1,11 +1,19 @@
 package com.itwill.shop.product;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProductService {
 	private ProductDao productDao;
 	public ProductService() throws Exception {
 		productDao = new ProductDao();
+	}
+	
+	/*
+	 * 고객 옵션 선택시 db에 고객이 선택한 옵션으로 상품 옵션 변경
+	 */
+	public int updateOption(int p_no,String p_option) throws Exception {
+		return productDao.update(p_no, p_option);
 	}
 	/*
 	 * 전체 상품 보기
@@ -31,5 +39,20 @@ public class ProductService {
 	public List<Product> searchProductName(String keyword) throws Exception{
 		return productDao.searchProductName(keyword);
 	}
+	
+	/*
+	 * 상품 카테고리 내에서 가격 내림차순 정렬
+	 */
+	public List<Product> categorySortDesc(int ca_no) throws Exception{
+		return productDao.categorySortDesc(ca_no);
+	}
+	
+	/*
+	 * 상품 카테고리 내에서 가격 오름차순 정렬
+	 */
+	public List<Product> categorySortAsc(int ca_no) throws Exception{
+		return productDao.categorySortAsc(ca_no);
+	}
+	
 	
 }
