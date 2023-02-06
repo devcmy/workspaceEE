@@ -15,9 +15,10 @@ public class OrderItem {
 	private int oi_qty;
 	/********FK********/
 	private int o_no;
+	//접근할꺼면 private Order order;
 	/*******FK*******/
 	private Product product;
-	
+	//양방향 가능하지만 한방향만설정(o_no는 객체로 접근하지않아서..)
 	public OrderItem() {
 		// TODO Auto-generated constructor stub
 	}

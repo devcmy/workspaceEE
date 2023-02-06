@@ -191,12 +191,12 @@ public class OrderDao {
 		 */
 		if (rs.next()) {
 			order = new Order(rs.getInt("o_no"), rs.getString("o_desc"), rs.getDate("o_date"), rs.getInt("o_price"),
-					rs.getString("userid"));
+					rs.getString("userid")); //order넣고
 			do {
 				order.getOrderItemList()
 						.add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
 								new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-										rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count"))));
+										rs.getString("p_image"), rs.getString("p_desc"), rs.getInt("p_click_count")))); //orderitem넣고
 			} while (rs.next());
 		}
 		} finally {

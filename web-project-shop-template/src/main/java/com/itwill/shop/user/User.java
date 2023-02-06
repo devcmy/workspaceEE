@@ -20,6 +20,8 @@ public class User {
 	private String password;
 	private String name;
 	private String email;
+	//private List<Order> orderList; *회원의 주문정보 보여줄때갖고잇어야한다.
+	//private List<Review> reviewList; -> 회원의 상품의 작성한 리뷰보여줄때 갖고잇어야한다.
 
 	public User() {
 		// TODO Auto-generated constructor stub

@@ -1,3 +1,4 @@
+/**************************카트******************************/
 --guard1 멤버한사람의  카트에 제품번호 존재여부
 select count(*)  as p_count from cart c join userinfo u on c.userid=u.userid where u.userid='guard1' and c.p_no=1;
 
@@ -33,18 +34,29 @@ delete from cart where cart_no=1;
 --guard1님 카트아이템모두삭제
 delete from cart where userid='guard1';
 
-
+/**************************주문******************************/
 --1. 멤버 한사람의 주문전체목록
-select * from orders where userid='guard1';
+--select * from orders where userid='guard1';
 
---2. 주문한개(멤버 한사람의) 
-select * from orders where o_no=1;
+--2. 주문한개(멤버 한사람의)  --그닥
+--select * from orders where o_no=1;
 
 
 --3. 주문한개의  주문상세 여러개(주문상세)
 select * from order_item where o_no = 1;
 
---4. 주문한개의 주문상세,제품정보 여러개(주문상세,제품)
+--4. 특정 회원의 주문한개의 주문상세,제품정보 여러개(주문상세,제품) 요즘많이 씀.
+select * from orders o join order_item oi on o.o_no=oi.o_no join product p on oi.p_no = p.p_no where o.userid='guard1' and o.o_no=1;
+
+
+
+--4. 주문한개의 주문상세,제품정보 여러개(주문상세,제품) 요즘많이 씀.
+select * from orders o join order_item oi on o.o_no=oi.o_no  join  product p on oi.p_no=p.p_no 
+where o.userid='guard1';
+
+
+
+--4. 주문한개의 주문상세,제품정보 여러개(주문상세,제품) 요즘많이 씀.
 select * from orders o join order_item oi on o.o_no=oi.o_no  join  product p on oi.p_no=p.p_no 
 where o.userid='guard1' and o.o_no = 1;
 

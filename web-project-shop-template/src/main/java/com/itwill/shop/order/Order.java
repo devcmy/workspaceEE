@@ -19,7 +19,7 @@ public class Order {
 	private Date o_date;
 	private int o_price;
 	/*************FK****************/
-	private String userid;
+	private String userid; //userinfo객체안넣어줌.
 	/***********List<OrderItem>****/
 	private List<OrderItem> orderItemList;
 	public Order() {
