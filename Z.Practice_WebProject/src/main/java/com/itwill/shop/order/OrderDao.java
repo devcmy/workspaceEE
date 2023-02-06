@@ -119,7 +119,7 @@ public class OrderDao {
 	}
 	
 	/*
-	 * 주문1개보기(주문상세리스트) -> product 받아야함.
+	 * 주문1개보기(주문상세리스트)
 	 */
 	public Order findByOrderNo(int o_no) throws Exception {
 		Order order = null;
@@ -136,7 +136,7 @@ public class OrderDao {
 		pstmt.setInt(1, o_no);
 		rs = pstmt.executeQuery();
 		/*
-		 *       O_NO O_DESC        O_DATE     O_PRICE USERID    OI_NO     OI_QTY   O_NO    P_NO   P_NO P_NAME         P_PRICE    P_IMAGE                           P_DESC                                                                                                                                                                                                  
+		 *       O_NO O_DESC        O_DATE     O_PRICE USERID    OI_NO     OI_QTY   O_NO    P_NO   P_NO P_NAME         P_PRICE    P_desc     p_image p_option                                                                                                                                                                                                  
 ---------- ------------------------- ---------- ---------- -----------------------------------------------------------------------------------------------------------------------------
          1 T1링외1종      2023/02/05    3960000 cmy0        1          1          1          1          1 T1링               3260000   T1ring.png                        상세 정보 등...                                                                                                                                                                                         
          1 T1링외1종      2023/02/05    3960000 cmy0        2          1          1          2          2 인터라킹 서클 링  700000   interlocking-circles-ring.png  상세 정보 등...
@@ -147,8 +147,7 @@ public class OrderDao {
 			do {
 				order.getOrderItem()
 						.add(new OrderItem(rs.getInt("oi_no"), rs.getInt("oi_qty"), rs.getInt("o_no"),
-								new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),
-										rs.getString("p_image"), rs.getString("p_desc"))));
+								new Product(rs.getInt("p_no"), rs.getString("p_name"), rs.getInt("p_price"),rs.getString("p_desc"),rs.getString("p_image"),rs.getString("p_option"))));
 			} while (rs.next());
 		}
 		} finally {
