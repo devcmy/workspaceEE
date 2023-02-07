@@ -29,7 +29,10 @@ public class OrderDaoTestMain {
 		Order newJumun=new Order(0,product.getP_name()+"외 0종" , new Date(0), product.getP_price(), "guard3");
 		orderDao.insert(newJumun);
 		System.out.println(orderDao.findOrderByUserId("guard3"));
-	
+		/*
+		 * 2.cart에서 주문
+		 */
+		
 		
 	}
 
