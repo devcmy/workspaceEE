@@ -155,7 +155,7 @@
 	
 
 
-      <Context docBase="web-project-team2-tiffany-and-coding" path="/web-project-team2-tiffany-and-coding" reloadable="true" source="org.eclipse.jst.jee.server:web-project-team2-tiffany-and-coding"/></Host>
+      <Context docBase="web-project-team2-tiffany-and-coding" path="/web-project-team2-tiffany-and-coding" reloadable="true" source="org.eclipse.jst.jee.server:web-project-team2-tiffany-and-coding"/><Context docBase="web-project-shop-complete" path="/web-project-shop-complete" reloadable="true" source="org.eclipse.jst.jee.server:web-project-shop-complete"/></Host>
     </Engine>
   </Service>
 </Server>
