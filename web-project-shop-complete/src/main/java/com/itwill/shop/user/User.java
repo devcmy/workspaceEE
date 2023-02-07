@@ -6,6 +6,7 @@ package com.itwill.shop.user;
  */
 
 public class User {
+	
 	/*
 	 * =================================== 
 	 * 이름 		널? 		유형
