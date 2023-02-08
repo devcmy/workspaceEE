@@ -32,6 +32,9 @@
 		document.cart_view_form.action='order_create_form.jsp';
 		document.cart_view_form.submit();
 	}
+	/*
+	선택된 카트상품을 주문
+	*/
 	function cart_view_form_select_order_submit(){
 		var cart_item_no_check_list=document.getElementsByName("cart_item_no_check");
 		var isChecked=false;
@@ -51,6 +54,9 @@
 		document.cart_view_form.action='order_create_form.jsp';
 		document.cart_view_form.submit();
 	}
+	/*
+	선택된 카트의 상품을 주문(checkbox 선택시 - cart 수량)
+	*/
 	function cart_item_select_count(){
 		
 		var cart_item_no_check_list = document.getElementsByName("cart_item_no_check");
