@@ -51,6 +51,10 @@ if (product == null) {
 		}
 	}
 
+	/*
+	제품상세보기에서주문
+	*/
+	
 	function order_create_form() {
 		if (<%=!isLogin%>) {
 			alert('로그인 하세요');

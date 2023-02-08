@@ -41,7 +41,7 @@ if (buyType.equals("cart")) {
 	}
 } else if (buyType.equals("direct")) {
 	Product product = productService.productDetail(Integer.parseInt(p_noStr));
-	cartItemList.add(new Cart(0,Integer.parseInt(p_qtyStr),sUserId, product));
+	cartItemList.add(new Cart(0,Integer.parseInt(p_qtyStr),sUserId, product)); //카트에서 안꺼내고 직접 생성
 }
 %>
 
