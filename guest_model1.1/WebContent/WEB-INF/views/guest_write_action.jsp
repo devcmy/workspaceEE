@@ -14,7 +14,7 @@ GET방식이면 guest_main.jsp redirection
 4.guest_list.jsp로 redirection
 */
 if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("guest_main.jsp");
+	response.sendRedirect("guest_main.do");
 	return;
 }
 try{
@@ -27,10 +27,10 @@ try{
 	guestService=null;
 	guestService.insert(
 			new Guest(0,guest_name,null,guest_email,guest_homepage,guest_title,guest_content));
-	response.sendRedirect("guest_list.jsp");
+	response.sendRedirect("guest_list.do");
 }catch(Exception e){
 	e.printStackTrace();
-	response.sendRedirect("guest_error.jsp");
+	response.sendRedirect("guest_error.do");
 	
 }
 %>

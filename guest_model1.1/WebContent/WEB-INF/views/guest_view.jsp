@@ -30,12 +30,12 @@
 	 /**********case2(scrip)*************/
 	 out.println("<script>");
 	 out.println("alert('존재하지않는 게시물입니다.');");
-	 out.println("location.href='guest_list.jsp';");
+	 out.println("location.href='guest_list.do';");
 	 out.println("</script>");
 	 return;
  }catch(Exception e){
 	 e.printStackTrace();
-	 response.sendRedirect("guest_error.jsp");
+	 response.sendRedirect("guest_error.do");
  }
  
 %>

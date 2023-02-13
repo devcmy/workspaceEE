@@ -16,5 +16,5 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 }
 String guest_noStr=request.getParameter("guest_no");
 new GuestService().delete(Integer.parseInt(guest_noStr));
-response.sendRedirect("guest_list.jsp");
+response.sendRedirect("guest_list.do");
 %>

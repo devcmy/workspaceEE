@@ -30,6 +30,6 @@ new GuestService().update(new Guest(Integer.parseInt(guest_noStr),
 									guest_email,
 									guest_homepage,
 									guest_title,guest_content));
-response.sendRedirect("guest_view.jsp?guest_no="+guest_noStr);
+response.sendRedirect("guest_view.do?guest_no="+guest_noStr);
 
 %>
