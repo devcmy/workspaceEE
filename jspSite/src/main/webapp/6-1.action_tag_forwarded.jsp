@@ -1,5 +1,16 @@
+<%@page import="com.itwill.student.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    System.out.println("6-1.action_tag_forward.jsp");
+    
+    String id =(String)request.getAttribute("id");
+    String name =(String)request.getAttribute("name");
+	int age = (Integer)request.getAttribute("age");
+	Student student=(Student)request.getAttribute("student");
+    
+    %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +22,13 @@
 <hr>
 <p>
 	나는 6-1.action_forward.jsp에서 forwarding당한 jsp입니다.. 제가 응답합니다.
+	<%=id %><br>
+	<%=name %><br>
+	<%=age %><br>
+	<%=student %><br>
+	
+	
+	
 </p>
 </body>
 </html>
