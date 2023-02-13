@@ -29,7 +29,7 @@
 			GuestService guestService = new GuestService();
 			Guest guest = new Guest(Integer.parseInt(noStr),name,null,email,homepage,title,content);
 			guestService.updateGuest(guest);
-			response.sendRedirect("guest_view.jsp?guest_no="+noStr);
+			response.sendRedirect("guest_view.jsp?guest_no="+noStr); 
 
 
 

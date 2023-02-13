@@ -10,9 +10,7 @@
 <h1>6-1.action_forwarded.jsp</h1>
 <hr>
 <p>
-	나는 6-1.action_forward.jsp에서 forwading
-	당한 jsp입니다..
-	제가 응답합니다.
+	나는 6-1.action_forward.jsp에서 forwarding당한 jsp입니다.. 제가 응답합니다.
 </p>
 </body>
 </html>
