@@ -5,19 +5,9 @@
 
 <%
 /*
- * 0.요청객체encoding설정
- * 1.gust_no 파라메타받기
- * 2.GuestService객체생성
- * 3.GuestService객체 selectByNo(guest_no) 메쏘드호출
  * 4.Guest 출력
  */
-GuestService guestService = new GuestService();
-String guest_noStr = request.getParameter("guest_no");
-if (guest_noStr == null || guest_noStr.equals("")) {
-	response.sendRedirect("guest_main.do");
-	return;
-}
-Guest guest = guestService.findByNo(Integer.parseInt(guest_noStr));
+Guest guest=(Guest)request.getAttribute("guest"); //넘겨받기
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
