@@ -17,14 +17,61 @@ import com.itwill.guest.GuestService;
  */
 @WebServlet("/guest_write_action.do")
 public class GuestWriteActionServlet extends HttpServlet {
+		private GuestService guestService;
+		public GuestWriteActionServlet() throws Exception {
+			guestService=new GuestService();
+		}
+		
+	
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String forwardPath = "";
-		forwardPath="/WEB-INF/views/guest_write_action.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
-		rd.forward(request, response);
+		
+		try {
+		if(request.getMethod().equalsIgnoreCase("GET")){
+			//response.sendRedirect("guest_main.do");
+			forwardPath="redirect:geust_main.do"
+;			return;
+		}else {
+			String guest_name=request.getParameter("guest_name");
+			String guest_email=request.getParameter("guest_email");
+			String guest_homepage=request.getParameter("guest_homepage");
+			String guest_title=request.getParameter("guest_title");
+			String guest_content=request.getParameter("guest_content");
+			Guest insertGuest=
+			new Guest(0,guest_name,null,guest_email,guest_homepage,guest_title,guest_content);
+			int insertRowCount=guestService.insert(insertGuest);
+			forwardPath="redirect:guest_list.do";
+		}
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+		}
+		
+		
+		/*****************forward or redirect ***********************/
+		//위에는 forwardpath만 세우고 컨트롤러 아래에서 forward or redirect 로 보냄
+		/* 구분(default가 forwarding)
+		 * forward  --> forward:/WEB-INF/views/guest_xxx.jsp
+		 * redirect --> redirect:guest_xxx.do
+		 * redirect에 jsp있으면 무조건 404
+		 */
+		String[] pathArray = forwardPath.split(":");
+		String forwardOrRedirect = pathArray[0];
+		String path = pathArray[1];
+		
+		if(forwardOrRedirect.equals("redirect")) {
+			//redirect
+			response.sendRedirect(path);
+		}else {
+			//forwarding
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
+			
+		}
+		/************************************************************/
 		
 		
 	}

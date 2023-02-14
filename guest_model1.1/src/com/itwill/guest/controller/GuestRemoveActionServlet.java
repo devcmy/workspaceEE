@@ -17,13 +17,51 @@ import com.itwill.guest.GuestService;
 @WebServlet("/guest_remove_action.do")
 public class GuestRemoveActionServlet extends HttpServlet {
 	
+	private GuestService guestService;
+	public GuestRemoveActionServlet() throws Exception {
+		guestService = new GuestService();
+	}
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String forwardPath = "";
-		forwardPath = "/WEB-INF/views/guest_remove_action.jsp";
+		try {
+			 
+			if(request.getMethod().equalsIgnoreCase("GET")){
+				 //response.sendRedirect("guest_main.do"); ->forwardPath로 기술한다.
+				forwardPath="redirect:guest_main.do";
+			 }else {
+				 String guest_noStr = request.getParameter("guest_no");
+				 
+				 int deleteRowCount=guestService.delete(Integer.parseInt(guest_noStr));
+				//response.sendRedirect("guest_list.do");
+				 forwardPath="redirect:guest_list.do";
+			 }
+		}catch (Exception e) {
+			e.printStackTrace();
+			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+		}
+		/*****************forward or redirect ***********************/
+		//위에는 forwardpath만 세우고 컨트롤러 아래에서 forward or redirect 로 보냄
+		/* 구분(default가 forwarding)
+		 * forward  --> forward:/WEB-INF/views/guest_xxx.jsp
+		 * redirect --> redirect:guest_xxx.do
+		 * redirect에 jsp있으면 무조건 404
+		 */
+		String[] pathArray = forwardPath.split(":");
+		String forwardOrRedirect = pathArray[0];
+		String path = pathArray[1];
 		
-		RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
-		rd.forward(request, response);
+		if(forwardOrRedirect.equals("redirect")) {
+			//redirect
+			response.sendRedirect(path);
+		}else {
+			//forwarding
+			RequestDispatcher rd = request.getRequestDispatcher(path);
+			rd.forward(request, response);
+			
+		}
+		/************************************************************/
 	}
 
 }

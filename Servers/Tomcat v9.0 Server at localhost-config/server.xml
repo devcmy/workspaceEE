@@ -155,7 +155,7 @@
 	
 
 
-      </Host>
+      <Context docBase="guest_model1.1" path="/guest_model1.1" reloadable="true" source="org.eclipse.jst.jee.server:guest_model1.1"/></Host>
     </Engine>
   </Service>
 </Server>
