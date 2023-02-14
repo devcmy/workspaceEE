@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class GuestWriteFormSevlet
  */
-@WebServlet("/guest_write_form.do")
+//@WebServlet("/guest_write_form.do")
 public class GuestWriteFormServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
