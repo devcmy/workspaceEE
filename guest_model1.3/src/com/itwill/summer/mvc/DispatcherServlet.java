@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
+import com.itwill.guest.controller.GuestListController;
+import com.itwill.guest.controller.GuestMainController;
 
 /*
  * 1. 클라이언트(웹브라우져)의 모든요청을 받는 서블릿작성(front Controller)
@@ -74,21 +76,15 @@ public class DispatcherServlet extends HttpServlet {
 		String forwardPath="";
 		
 		if(command.equals("/guest_main.do")) {
-			/*********************GUEST_MAIN.DO*********************/
-			forwardPath="forward:/WEB-INF/views/guest_main.jsp";
+			/*********************GUEST_MAIN.DO를 처리하는 Controller객체를 생성해줌*********************/
+			GuestMainController controller = new GuestMainController();
+				forwardPath = controller.handleRequest(request, response);
 			/******************************************************/
+				
 		}else if (command.equals("/guest_list.do")) {
-			/*********************GUEST_LIST.DO*********************/
-			try {
-				//guest_list.jsp에 있는 자바코드를 여기로 이동(jsp는 출력만 담당)
-			forwardPath="forward:/WEB-INF/views/guest_list.jsp";
-			GuestService guestService=new GuestService();
-			List<Guest> guestList = guestService.findAll(); //여기서 throws 예외 던지면 재정의위반
-			request.setAttribute("userList", guestList);
-			}catch (Exception e) {
-				e.printStackTrace();
-				forwardPath="forward:/WEB-INF/views/guest_error.jsp";
-			}
+			/*********************GUEST_LIST.DO를 처리하는 Controller객체를 생성해줌*********************/
+			GuestListController controller = new GuestListController();
+			forwardPath = controller.handleRequest(request, response);    
 			/******************************************************/
 		}else if (command.equals("/guest_view.do")) {
 			/*********************GUEST_VIEW.DO*********************/
