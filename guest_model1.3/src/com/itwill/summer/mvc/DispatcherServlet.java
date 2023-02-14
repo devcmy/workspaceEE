@@ -77,11 +77,11 @@ public class DispatcherServlet extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 		
 		/*
-		 * 2.DispathcerServlet이 클라이언트 요청에 따른 비즈니스 실행[Service객체사용]
+		 * 2-1. DispathcerServlet이 클라이언트 요청에 따른 업무 실행할 Controller객체생성
 		 */
 		
 		String forwardPath="";
-		Controller controller = null;
+		Controller controller = null; //Controller 객체 만듦
 		
 		if(command.equals("/guest_main.do")) {
 			/*********************GUEST_MAIN.DO를 처리하는 Controller객체를 생성해줌*********************/
@@ -117,17 +117,17 @@ public class DispatcherServlet extends HttpServlet {
 			controller = new GuestRemoveActionController();
 			/******************************************************/
 		}else {
-			
 			controller = new GuestErrorController();
-			
-			
 		}
-		
+		/*
+		 * 2-2. DispatcherServlet이 Controller객체의 handleRequest 메쏘드가 실행
+		 * 2-3. DispatcherServlet이 Controller객체의 handleRequest 메쏘드가 실행반환값을 forwardPath를 받는다.
+		 */
 		
 		forwardPath = controller.handleRequest(request, response);
 		
 		/*
-		 * 3. DispatcherServlet이 forwardPath를 사용해서 forward 혹은 redirect를 한다.
+		 * 3. DispatcherServlet이 반환받은 반환값인 forwardPath를 사용해서 forward 혹은 redirect를 한다.
 		 */
 			
 		/*****************forward or redirect ***********************(forwarding은 여기서함 위에서는 분류)/
