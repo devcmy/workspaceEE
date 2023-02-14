@@ -189,7 +189,7 @@ public class DispatcherServlet extends HttpServlet {
 		 * 3. DispatcherServlet이 forwardPath를 사용해서 forward 혹은 redirect를 한다.
 		 */
 			
-		/*****************forward or redirect ***********************/
+		/*****************forward or redirect ***********************(forwarding은 여기서함 위에서는 분류)/
 		//위에는 forwardpath만 세우고 컨트롤러 아래에서 forward or redirect 로 보냄
 		/* 구분(default가 forwarding)
 		 * forward  --> forward:/WEB-INF/views/guest_xxx.jsp
