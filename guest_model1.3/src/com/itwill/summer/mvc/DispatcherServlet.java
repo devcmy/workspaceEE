@@ -87,7 +87,6 @@ public class DispatcherServlet extends HttpServlet {
 			/*********************GUEST_MAIN.DO를 처리하는 Controller객체를 생성해줌*********************/
 			controller = new GuestMainController();
 			/******************************************************/
-				
 		}else if (command.equals("/guest_list.do")) {
 			/*********************GUEST_LIST.DO를 처리하는 Controller객체를 생성해줌*********************/
 			controller = new GuestListController();
