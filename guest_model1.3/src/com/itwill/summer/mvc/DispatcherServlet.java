@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
+import com.itwill.guest.controller.GuestErrorController;
 import com.itwill.guest.controller.GuestListController;
 import com.itwill.guest.controller.GuestMainController;
 import com.itwill.guest.controller.GuestModifyActionController;
@@ -116,7 +117,10 @@ public class DispatcherServlet extends HttpServlet {
 			controller = new GuestRemoveActionController();
 			/******************************************************/
 		}else {
-			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
+			
+			controller = new GuestErrorController();
+			
+			
 		}
 		
 		
