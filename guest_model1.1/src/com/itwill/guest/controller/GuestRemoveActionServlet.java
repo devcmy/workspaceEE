@@ -9,15 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwill.guest.GuestService;
+
 /**
- * Servlet implementation class GuestRemoveActionServlet
+ * Servlet implementation class GuestWriteFormSevlet
  */
 @WebServlet("/guest_remove_action.do")
 public class GuestRemoveActionServlet extends HttpServlet {
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String forwardPath="/WEB-INF/views/guest_remove_action.jsp";
-		RequestDispatcher rd = 
-				request.getRequestDispatcher(forwardPath);
+	
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String forwardPath = "";
+		forwardPath = "/WEB-INF/views/guest_remove_action.jsp";
+		
+		RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
 		rd.forward(request, response);
 	}
+
 }

@@ -1,10 +1,10 @@
-       /**
+/**
  * 
  */
 
 function guestCreateForm() {
 	/*
-	document.f.action = 'guest_write_form.do';
+	document.f.action = 'guest_write_form.jsp';
 	document.f.submit();
 	*/
 	window.location.href='guest_write_form.do';

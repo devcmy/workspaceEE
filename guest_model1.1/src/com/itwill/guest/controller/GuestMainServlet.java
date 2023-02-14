@@ -14,17 +14,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/guest_main.do")
 public class GuestMainServlet extends HttpServlet {
-	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 * 클라이언트가 직접 요청x -> web-inf/views안에 넣음 (모든 jsp요청오면 404뜸)
-		 * servlet 통해서만 가능 jsp에서는 직접호출x
-		 */
-		String forwardPath="/WEB-INF/views/guest_main.jsp";
-		RequestDispatcher rd = 
-				request.getRequestDispatcher(forwardPath);
+
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String forwardPath ="";
+		forwardPath="/WEB-INF/views/guest_main.jsp";
+
+		RequestDispatcher rd = request.getRequestDispatcher(forwardPath);
 		rd.forward(request, response);
-		
+
 	}
 
 }
