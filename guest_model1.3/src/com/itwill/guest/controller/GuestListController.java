@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
+import com.itwill.summer.mvc.Controller;
 
-public class GuestListController {
+public class GuestListController implements Controller{
 	private GuestService guestService;
 	public GuestListController() {
 		guestService = new GuestService();

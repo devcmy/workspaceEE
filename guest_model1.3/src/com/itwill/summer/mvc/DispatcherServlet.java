@@ -14,6 +14,12 @@ import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
 import com.itwill.guest.controller.GuestListController;
 import com.itwill.guest.controller.GuestMainController;
+import com.itwill.guest.controller.GuestModifyActionController;
+import com.itwill.guest.controller.GuestModifyFormController;
+import com.itwill.guest.controller.GuestRemoveActionController;
+import com.itwill.guest.controller.GuestViewController;
+import com.itwill.guest.controller.GuestWriteActionController;
+import com.itwill.guest.controller.GuestWriteFormController;
 
 /*
  * 1. 클라이언트(웹브라우져)의 모든요청을 받는 서블릿작성(front Controller)
@@ -74,112 +80,47 @@ public class DispatcherServlet extends HttpServlet {
 		 */
 		
 		String forwardPath="";
+		Controller controller = null;
 		
 		if(command.equals("/guest_main.do")) {
 			/*********************GUEST_MAIN.DO를 처리하는 Controller객체를 생성해줌*********************/
-			GuestMainController controller = new GuestMainController();
-				forwardPath = controller.handleRequest(request, response);
+			controller = new GuestMainController();
 			/******************************************************/
 				
 		}else if (command.equals("/guest_list.do")) {
 			/*********************GUEST_LIST.DO를 처리하는 Controller객체를 생성해줌*********************/
-			GuestListController controller = new GuestListController();
-			forwardPath = controller.handleRequest(request, response);    
+			controller = new GuestListController();
 			/******************************************************/
 		}else if (command.equals("/guest_view.do")) {
-			/*********************GUEST_VIEW.DO*********************/
-			try {
-				String guest_noStr = request.getParameter("guest_no");
-				if (guest_noStr == null || guest_noStr.equals("")) {
-					forwardPath="redirect:guest_main.do";
-				}else {
-				Guest guest = guestService.findByNo(Integer.parseInt(guest_noStr));
-				request.setAttribute("guest", guest);//넘겨주기
-				forwardPath = "forward:/WEB-INF/views/guest_view.jsp";
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				forwardPath="forward:/WEB-INF/views/guest_error.jsp";
-			}
+			/*********************GUEST_VIEW.DO를 처리하는 Controller객체를 생성해줌*********************/
+			controller = new GuestViewController();
 			/******************************************************/
 		}else if (command.equals("/guest_write_form.do")) {
-			/*********************GUEST_WRITE_FORM.DO*********************/
-			forwardPath = "forward:/WEB-INF/views/guest_write_form.jsp";
+			/*********************GUEST_WRITE_FORM.DO를 처리하는 Controller객체를 생성해줌*********************/
+			controller = new GuestWriteFormController();
 			/******************************************************/
 		}else if (command.equals("/guest_write_action.do")) {
-			/*********************GUEST_WRITE_ACTION.DO*********************/
-			try {
-				if(request.getMethod().equalsIgnoreCase("GET")){
-					forwardPath="redirect:geust_main.do"
-		;			return;
-				}else {
-					String guest_name=request.getParameter("guest_name");
-					String guest_email=request.getParameter("guest_email");
-					String guest_homepage=request.getParameter("guest_homepage");
-					String guest_title=request.getParameter("guest_title");
-					String guest_content=request.getParameter("guest_content");
-					Guest insertGuest=
-					new Guest(0,guest_name,null,guest_email,guest_homepage,guest_title,guest_content);
-					int insertRowCount=guestService.insert(insertGuest);
-					forwardPath="redirect:guest_list.do";
-				}
-				}catch (Exception e) {
-					e.printStackTrace();
-					forwardPath="forward:/WEB-INF/views/guest_error.jsp";
-				}
+			/*********************GUEST_WRITE_ACTION.DO를 처리하는 Controller객체를 생성해줌*********************/
+			controller = new GuestWriteActionController();
 			/******************************************************/
 		}else if (command.equals("/guest_modify_form.do")) {
-			/*********************GUEST_MODIFY_FORM.DO*********************/
-			try {
-				if(request.getMethod().equalsIgnoreCase("GET")){
-					forwardPath="redirect:guest_main.do";
-				}else {
-					String guest_noStr=request.getParameter("guest_no");
-					Guest guest=guestService.findByNo(Integer.parseInt(guest_noStr));
-					request.setAttribute("guest", guest);
-					forwardPath = "forward:/WEB-INF/views/guest_modify_form.jsp";//맨마지막에
-				}
-			}catch (Exception e) {
-				e.printStackTrace();
-				forwardPath="forward:/WEB-INF/views/guest_error.jsp";
-			}
+			/*********************GUEST_MODIFY_FORM.DO를 처리하는 Controller객체를 생성해줌*********************/
+			controller = new GuestModifyFormController();
 			/******************************************************/
 		}else if (command.equals("/guest_modify_action.do")) {
-			/*********************GUEST_MODIFY_ACTION.DO*********************/
-			try {
-				if(request.getMethod().equalsIgnoreCase("GET")){
-					forwardPath="redirect:guest_main.do";
-				}else {
-					String guest_noStr=request.getParameter("guest_no");
-					Guest guest=guestService.findByNo(Integer.parseInt(guest_noStr));
-					request.setAttribute("guest", guest);
-					forwardPath = "forward:/WEB-INF/views/guest_modify_form.jsp";//맨마지막에
-				}
-			}catch (Exception e) {
-				e.printStackTrace();
-				forwardPath="forward:/WEB-INF/views/guest_error.jsp";
-			}
+			/*********************GUEST_MODIFY_ACTION.DO를 처리하는 Controller객체를 생성해줌*********************/
+			controller = new GuestModifyActionController();
 			/******************************************************/
 		}else if (command.equals("/guest_remove_action.do")) {
-			/*********************GUEST_REMOVE_ACTION.DO*********************/
-			try {
-				 
-				if(request.getMethod().equalsIgnoreCase("GET")){
-					forwardPath="redirect:guest_main.do";
-				 }else {
-					 String guest_noStr = request.getParameter("guest_no");
-					 
-					 int deleteRowCount=guestService.delete(Integer.parseInt(guest_noStr));
-					 forwardPath="redirect:guest_list.do";
-				 }
-			}catch (Exception e) {
-				e.printStackTrace();
-				forwardPath="forward:/WEB-INF/views/guest_error.jsp";
-			}
+			/*********************GUEST_REMOVE_ACTION.DO를 처리하는 Controller객체를 생성해줌*********************/
+			controller = new GuestRemoveActionController();
 			/******************************************************/
 		}else {
 			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
 		}
+		
+		
+		forwardPath = controller.handleRequest(request, response);
 		
 		/*
 		 * 3. DispatcherServlet이 forwardPath를 사용해서 forward 혹은 redirect를 한다.
