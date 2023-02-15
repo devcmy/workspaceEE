@@ -155,7 +155,7 @@
 	
 
 
-      <Context docBase="summer_model2" path="/summer_model2" reloadable="true" source="org.eclipse.jst.jee.server:summer_model2"/></Host>
+      <Context docBase="summer_model2" path="/summer_model2" reloadable="true" source="org.eclipse.jst.jee.server:summer_model2"/><Context docBase="guest_model2.0_controller_practice" path="/guest_model2.0_controller_practice" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2.0_controller_practice"/><Context docBase="guest_model2.0" path="/guest_model2.0" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2.0"/><Context docBase="guest_model2.0_jsp_practice" path="/guest_model2.0_jsp_practice" reloadable="true" source="org.eclipse.jst.jee.server:guest_model2.0_jsp_practice"/></Host>
     </Engine>
   </Service>
 </Server>
