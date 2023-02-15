@@ -8,6 +8,13 @@
 </head>
 <body>
 <h1>main.jsp</h1><hr>
-
+<ol>
+	<li><a href='list.do'>목록[list.do]</a></li>
+	<li><a href='detail.do'>상세보기[detail.do]</a></li>
+	<li><a href='login_form.do'>로그인폼[login_form.do]</a></li>
+	<li><a href='join_form.do'>가입폼[join_form.do]</a></li>
+	<li><a href='update_form.do'>수정폼[update_form.do]</a></li>
+	
+</ol>
 </body>
 </html>
