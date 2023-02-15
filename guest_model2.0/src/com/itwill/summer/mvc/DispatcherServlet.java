@@ -33,15 +33,17 @@ import com.itwill.guest.controller.GuestWriteFormController;
 /*
  * 1. 클라이언트(웹브라우져)의 모든요청을 받는 서블릿작성(front Controller)
  * 2. 확장자가 *.do인 모든클라이언트의 요청이 서블릿을 실행하도록 web.xml에 url pattern mapping
+ * 파일 위치 바뀌면 web.xml에서 바꿔주면된다.
    << web.xml >>
-    <servlet>
-		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>com.itwill.summer.mvc.DispatcherServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
+     <servlet>
+	    <servlet-name>dispatcher</servlet-name>
+	    <servlet-class>com.itwill.summer.mvc.DispatcherServlet</servlet-class>
+	    <init-param>
+	      <param-name>configFile</param-name>
+	      <param-value>/WEB-INF/guest_controller_mapping.properties</param-value>
+	    </init-param>
+	    <load-on-startup>0</load-on-startup>
+    </servlet>
  */
 
 public class DispatcherServlet extends HttpServlet {
@@ -57,7 +59,9 @@ public class DispatcherServlet extends HttpServlet {
 			super.init(config);
 			handlerMapping = new HashMap<String, Controller>();
 			
-			String configFile = "/WEB-INF/guest_controller_mapping.properties";
+			//String configFile = "/WEB-INF/guest_controller_mapping.properties";
+			String configFile = config.getInitParameter("configFile");
+			//config 파일만 외부에서 설정하게되면 의존성 더 낮춤.
 			String siteRootRealPath = this.getServletContext().getRealPath("/");
 			String configFilePath=siteRootRealPath+configFile;
 			
