@@ -60,7 +60,7 @@ public class DispatcherServlet extends HttpServlet {
 			handlerMapping = new HashMap<String, Controller>();
 			
 			//String configFile = "/WEB-INF/guest_controller_mapping.properties";
-			String configFile = config.getInitParameter("configFile");
+			String configFile = config.getInitParameter("configFile");//외부(web.xml)에 설정되어있는 걸 가져옴
 			//config 파일만 외부에서 설정하게되면 의존성 더 낮춤.
 			String siteRootRealPath = this.getServletContext().getRealPath("/");
 			String configFilePath=siteRootRealPath+configFile;
@@ -90,7 +90,10 @@ public class DispatcherServlet extends HttpServlet {
 				System.out.println("------설정파일["+configFile+"]을 이용해서 Controller 객체를 생성----");
 				while (commandkeyIterator.hasNext()) {
 					String command = (String) commandkeyIterator.next();
-					String controllerClassName = controllerMappingProperties.getProperty(command);
+					String controllerClassName = controllerMappingProperties.getProperty(command); //클래스이름 가져옴
+					
+					//웹에서 가져오는건 전부 String이라서, class.forname으로 이름을 찾아서 -> Class clazz로 만듦. -> 객체생성
+					
 					/*
 					 * "com.itwill.guest.controller.GuestMainController"
 					 * Controller클래스 이름을 사용해서 Controller 객체 생성
@@ -98,9 +101,10 @@ public class DispatcherServlet extends HttpServlet {
 					 *  2. 메모리에 로딩된 클래스의 기본생성자를 호출해서 객체생성
 					 */
 					Class controllerClass = Class.forName(controllerClassName); //1. //파리미터로 클래스의 풀 이름을 입력으로 받아서 클래스를 찾으면 그 클래스의 Class객체를 리턴하고 못 찾으면 예외를 발생시키는 메소드입니다.
-					Controller controllerObject = (Controller)controllerClass.newInstance(); //2. //class의 기본생성자 호출 
+					Controller controllerObject = (Controller)controllerClass.newInstance(); //2. //객체생성 -> class의 기본생성자 호출 
 					handlerMapping.put(command, controllerObject);
 					System.out.println(command+"="+controllerObject);
+				//init()메소드 끝.
 				}
 				
 			System.out.println("----------------------------------------------------------------------");
