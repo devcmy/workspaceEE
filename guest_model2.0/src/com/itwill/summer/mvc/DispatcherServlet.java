@@ -1,9 +1,14 @@
 package com.itwill.summer.mvc;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -51,6 +56,79 @@ public class DispatcherServlet extends HttpServlet {
 		public void init(ServletConfig config) throws ServletException {
 			super.init(config);
 			handlerMapping = new HashMap<String, Controller>();
+			
+			String configFile = "/WEB-INF/guest_controller_mapping.properties";
+			String siteRootRealPath = this.getServletContext().getRealPath("/");
+			String configFilePath=siteRootRealPath+configFile;
+			
+			try {
+				/*
+				 * 설정파일(guest_controller_mapping.properties)을 읽어서 Properties객체 생성
+				 */
+				InputStream fis = new FileInputStream(configFilePath);
+				Properties controllerMappingProperties = new Properties();
+				controllerMappingProperties.load(fis);
+				System.out.println(">> : "+controllerMappingProperties);
+				/*
+				 <<Properties객체>>
+				 --------------------------------------------
+				 |key(String)      |      value(String)     |
+				 --------------------------------------------
+				 |/guest_main.do   |com..GuestMainController|	
+				  -------------------------------------------
+				 |/guest_list.do   |com..GuestListController|		
+				  -------------------------------------------
+				 |/guest_view.do   |com..GuestViewController|		
+				 --------------------------------------------	
+				*/
+				Set commandKeySet = controllerMappingProperties.keySet();
+				Iterator<String> commandkeyIterator = commandKeySet.iterator();
+				System.out.println("------설정파일["+configFile+"]을 이용해서 Controller 객체를 생성----");
+				while (commandkeyIterator.hasNext()) {
+					String command = (String) commandkeyIterator.next();
+					String controllerClassName = controllerMappingProperties.getProperty(command);
+					/*
+					 * "com.itwill.guest.controller.GuestMainController"
+					 * Controller클래스 이름을 사용해서 Controller 객체 생성
+					 * 	1. Controller클래스 이름을 사용해서 클래스를 메모리에 로딩
+					 *  2. 메모리에 로딩된 클래스의 기본생성자를 호출해서 객체생성
+					 */
+					Class controllerClass = Class.forName(controllerClassName); //1. //파리미터로 클래스의 풀 이름을 입력으로 받아서 클래스를 찾으면 그 클래스의 Class객체를 리턴하고 못 찾으면 예외를 발생시키는 메소드입니다.
+					Controller controllerObject = (Controller)controllerClass.newInstance(); //2. //class의 기본생성자 호출 
+					handlerMapping.put(command, controllerObject);
+					System.out.println(command+"="+controllerObject);
+				}
+				
+			System.out.println("----------------------------------------------------------------------");
+				
+				
+				
+				
+				       
+			}catch (Exception e) {
+				e.printStackTrace();
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			/*
 			 << Map<String, Controller> handlerMapping>>
 			 ------------------------------------------------
@@ -63,7 +141,7 @@ public class DispatcherServlet extends HttpServlet {
 			 |/guest_view.do   |com..GuestViewController객체|		
 			 ------------------------------------------------
 			 */
-			/****************직접생성****************************************/
+			/****************직접생성****************************************
 			handlerMapping.put("/guest_main.do", new GuestMainController());
 			handlerMapping.put("/guest_list.do", new GuestListController());
 			handlerMapping.put("/guest_view.do", new GuestViewController());
@@ -74,6 +152,7 @@ public class DispatcherServlet extends HttpServlet {
 			handlerMapping.put("/guest_remove_action.do", new GuestRemoveActionController());
 			handlerMapping.put("/guest_error.do", new GuestErrorController());
 			System.out.println(">> init :"+handlerMapping);
+			*********************************************************/
 			
 		}
 	
