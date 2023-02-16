@@ -108,7 +108,7 @@ if(fuser==null)fuser=new User("","","","");
 											아이디</td>
 										<td width=490 bgcolor="ffffff" style="padding-left: 10px" align="left">
 											<input type="text" style="width: 150px" name="userId"
-											value="<%=fuser.getUserId()%>">&nbsp;&nbsp;<font color="red"></font>
+											value="<%=fuser.getUserId()%>">&nbsp;&nbsp;<font color="red"><%=msg%></font>
 										</td>
 									</tr>
 									<tr>
