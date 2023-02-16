@@ -18,6 +18,10 @@ guestMap.put("g1", g1);
 guestMap.put("g2", g2);
 guestMap.put("g3", g3);
 
+request.setAttribute("guestList", guestList);
+request.setAttribute("guestMap", guestMap);
+
+// EL은 scope객체(request 등 안붙혀주면 출력안된다)아닌건 절대 사용할수없다.
 
 %>    
 <!DOCTYPE html>
@@ -42,29 +46,27 @@ guestMap.put("g3", g3);
 	<li>${guestList[2].guest_name}</li>
 	<li>-------------for문----------------</li>
 	<%
-	for(int i=0;i<3;i++){
-		pageContext.setAttribute("i", i);
+	for(int i=0;i<3;i++){ 
+		pageContext.setAttribute("index", i); //임시적으로 pageContext 붙혀서 보냄.
 	%>
-		<li>${guestList[i]}</li>
-		<li>${guestList[i].guest_no}</li>
-		<li>${guestList[i].guest_name}</li>
-	<%}%>
+	<li>${guestList[index].guest_no}</li>
+	<li>${guestList[index].guest_name}</li>
+	<%} %>
 	<li>-------------Map------------------</li>
 	<li>${guestMap}</li>	
 	<li>${guestMap['g1']}</li>	
+	<li>${guestMap['g2']}</li>	
 	<li>${guestMap['g1'].guest_no}</li>	
 	<li>${guestMap['g1'].guest_name}</li>	
-	<li>${guestMap['g1'].guest_email}</li>	
 	
+
 	<li>${guestMap.g2}</li>	
 	<li>${guestMap.g2.guest_no}</li>	
 	<li>${guestMap.g2.guest_name}</li>	
-	<li>${guestMap.g2.guest_email}</li>	
 	
-	<li>${guestMap.g3}</li>	
-	<li>${guestMap.g3.guest_no}</li>	
-	<li>${guestMap.g3.guest_name}</li>	
-	<li>${guestMap.g3.guest_email}</li>	
+	<li>${guestMap['g3']}</li>	
+	<li>${guestMap['g3'].guest_no}</li>	
+	<li>${guestMap['g3'].guest_name}</li>	
 	
 </ul>
 </body>

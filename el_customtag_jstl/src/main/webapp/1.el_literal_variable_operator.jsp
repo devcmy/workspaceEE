@@ -119,7 +119,7 @@
 		<li>${empty guestMap}</li>
 		<li>${empty ''}</li>
 		<li>${empty ""}</li>
-		<li>${empty null1}</li>
+		<li>${empty null}</li>
 	</ul>
 </body>
 </html>
