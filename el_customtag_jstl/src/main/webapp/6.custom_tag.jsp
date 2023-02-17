@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="itwill" uri="http://www.itwill.co.kr/jsp/simpleTag" %>
 <%
-	//session.setAttribute("sUserId", "jasper.c");
+	session.setAttribute("sUserId", "jasper.c");
 	request.setAttribute("name", "현빈");
 %>   
 <!DOCTYPE html>
@@ -18,7 +18,10 @@
 <itwill:hello/>
 ---------------helloAttr tag----------------------<br>
 <!-- 외부에서 속성이용해서 넣어줌 -->
-<itwill:helloAttr irum=""></itwill:helloAttr>
+<itwill:helloAttr irum="김경호"/>
+<itwill:helloAttr irum="공유"/>
+<itwill:helloAttr irum="${name}"/>
+<itwill:helloAttr irum="${sUserId}"/>
 ---------------if tag[body]----------------------<br>
 
 
