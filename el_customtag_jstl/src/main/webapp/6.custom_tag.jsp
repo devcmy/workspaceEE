@@ -23,6 +23,12 @@
 <itwill:helloAttr irum="${name}"/>
 <itwill:helloAttr irum="${sUserId}"/>
 ---------------if tag[body]----------------------<br>
+<itwill:if test="true">
+	반드시 실행<br>
+</itwill:if>
+<itwill:if test="false">
+	반드시 실행X<br>
+</itwill:if>
 
 
 
