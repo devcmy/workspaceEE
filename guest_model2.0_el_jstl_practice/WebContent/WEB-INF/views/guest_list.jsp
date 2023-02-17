@@ -3,9 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	 List<Guest> guestList =(List<Guest>)request.getAttribute("userList");
-%>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,19 +54,21 @@
 										<td width=120 align=center bgcolor="E6ECDE">이름</td>
 										<td width=120 align=center bgcolor="E6ECDE">날짜</td>
 									</tr>
-									<%for(Guest guest:guestList){ %>
+									
+									<c:forEach items="${guestList}" var="guest">
+									
 									<!-- guest start -->
 									<tr>
-										<td width=50 align=center bgcolor="ffffff" height="20"><%=guest.getGuest_no()%></td>
+										<td width=50 align=center bgcolor="ffffff" height="20">${guest.guest_no}</td>
 										<td width=300 bgcolor="ffffff" style="padding-left: 10">
-										<a href="guest_view.do?guest_no=<%=guest.getGuest_no()%>" class="user"> 
-											<%=guest.getGuest_title() %> 
+										<a href="guest_view.do?guest_no=${guest.guest_no}" class="user"> 
+											${guest.guest_title} 
 										</a>
 										</td>
-										<td width=120 align=center bgcolor="ffffff"><%=guest.getGuest_name()%></td>
-										<td width=120 align=center bgcolor="ffffff"><%=guest.getGuest_date()%></td>									</tr>
+										<td width=120 align=center bgcolor="ffffff">${guest.guest_name}</td>
+										<td width=120 align=center bgcolor="ffffff">${guest.guest_date}</td>									</tr>
 									<!-- guest end -->
-									<%}%>
+									</c:forEach>
 									
 
 

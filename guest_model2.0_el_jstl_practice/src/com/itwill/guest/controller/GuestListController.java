@@ -19,7 +19,7 @@ public class GuestListController implements Controller {
 		try {
 			List<Guest> guestList = guestService.findAll();
 			forwardPath="forward:/WEB-INF/views/guest_list.jsp";
-			request.setAttribute("userList", guestList);
+			request.setAttribute("guestList", guestList);
 		}catch (Exception e) {
 			e.printStackTrace();
 			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
