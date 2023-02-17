@@ -63,16 +63,15 @@
 		<%
 			}
 		%>
-		
-		
-		<li>-----------------------------</li>
+		<li>###############################</li>
 		<c:forEach items="${guestList}" var="g">
 			<li>${g} : [${g.guest_no}] ${g.guest_name}</li>
 		</c:forEach>
-		
-		
-		
 		<li>---------------Map--------------</li>
+			<c:forEach items="${guestMap}" var="guestEntry">
+			<li>${guestEntry.key} = ${guestEntry.value} --> ${guestEntry.value.guest_no},${guestEntry.value.guest_name}</li>
+			</c:forEach>
+		
 		
 		
 		
