@@ -15,6 +15,29 @@
 </head>
 <body>
 <h1>JSTL core choose tag</h1><hr>
+<!-- choose안에 when이랑 otherwise쓸수있다. otherwise는 default값 -->
+
+	<c:choose>
+		<c:when test="${! empty sUserId}">
+			<c:choose>
+				<c:when test="${sUserId=='admin'}">
+					<a href="">${sUserId}님 로그아웃</a><br>
+					<a href="">상품리스트</a><br>
+					<a href="">상품등록</a><br>
+				</c:when>
+				<c:otherwise>
+					<a href="">${sUserId} 님 로그아웃</a><br>
+					<a href="">상품리스트</a><br>
+				</c:otherwise>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<a href="">로그인</a><br>
+		</c:otherwise> 
+	</c:choose>
+
+
+
 <c:choose>
 	<c:when test="${level==1}">
 	초보시군요[${level}]<br>
