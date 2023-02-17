@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	session.setAttribute("sUserId", "guard");
-	request.setAttribute("level", 4);
+	request.setAttribute("level", 5);
 %>
 <!DOCTYPE html>
 <html>
@@ -21,17 +21,20 @@
 2.반드시 안실행<br>
 </c:if>
 <c:if test="${empty sUserId}">
-	<a href="login_form.jsp">로그인</a>
+	<a href="login_form.jsp">로그인</a><br>
 </c:if>
 <c:if test="${!empty sUserId}">
-	<a href="login_out_action.jsp">${sUserId} 님 로그아웃</a>
+	<a href="login_out_action.jsp">${sUserId} 님 로그아웃</a><br>
 </c:if>
-<br>
-<c:if test="${level>=4 && level<=5}">
-	${level} 레벨이라니 부럽워요 호호<br>
+<c:if test="${level !=null}">
+	<c:if test="${level>=4 && level<=5}">
+		${level} 레벨이라니 부럽워요 호호<br>
+	</c:if>	
 </c:if>
 
-
+	<c:if test="${level !=null && (level>=4 && level<=5)}">
+		${level} 레벨이라니 부럽워요 호호<br>
+	</c:if>	
 
 
 </body>
