@@ -29,6 +29,12 @@
 <itwill:if test="false">
 	반드시 실행X<br>
 </itwill:if>
+<itwill:if test="${sUserId == null}">
+	GUEST님 안녕하세요<br>
+</itwill:if>
+<itwill:if test="${sUserId != null}">
+	${sUserId} 님 안녕하세요<br>
+</itwill:if>
 
 
 
