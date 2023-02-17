@@ -19,6 +19,8 @@
 	guestMap.put("g2", g2);
 	guestMap.put("g3", g3);
 	
+	request.setAttribute("guestList", guestList);
+	request.setAttribute("guestMap", guestMap);
 	
 %>
 <!DOCTYPE html>
@@ -49,28 +51,30 @@
 		→ &dollar;{status.step} for문의 증가값
 &lt;/c:forEach&gt;
 	</pre>
-	
+	 <!-- var  : 안에서 뽑아서 쓸 el변수명 붙혀줌 -->
 	<ul>
 		<li>-------ArrayList[배열]-------</li>
-		<%
-			for(Guest guest:guestList){ 
-				pageContext.setAttribute("guest", guest);
+		<% 
+			for(Guest guest:guestList){
+				pageContext.setAttribute("g", guest);	
 		%>
-			
-			<li>${guest}</li>
-			
-		<%}%>
-		<li>###############################</li>
-		<c:forEach items="${guestList}" var="guest">
-			<li>[${guest.guest_no}] ${guest.guest_name},${guest.guest_email}</li>
+		
+				<li>${g}</li>
+		<%
+			}
+		%>
+		
+		
+		<li>-----------------------------</li>
+		<c:forEach items="${guestList}" var="g">
+			<li>${g} : [${g.guest_no}] ${g.guest_name}</li>
 		</c:forEach>
+		
+		
+		
 		<li>---------------Map--------------</li>
-		<c:forEach items="${guestMap}" var="guestEntry">
-		<!-- Map.Entry 객체는 getKey(),getValue()메쏘드를가짐 -->
-			<li>${guestEntry.key} = ${guestEntry.value}-->
-			${guestEntry.value.guest_no},${guestEntry.value.guest_name}
-			</li>
-		</c:forEach>
+		
+		
 		
 	</ul>
 </body>
