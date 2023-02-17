@@ -36,8 +36,12 @@
 	${sUserId} 님 안녕하세요<br>
 </itwill:if>
 
-
-
+<itwill:if test="${empty sUserId}">
+	<a href="user_login_form.jsp">로그인</a>
+</itwill:if>
+<itwill:if test="${!empty sUserId}">
+	<a href="user_logout_form.jsp">${sUserId}님 로그아웃</a>
+</itwill:if>
 
 
 
