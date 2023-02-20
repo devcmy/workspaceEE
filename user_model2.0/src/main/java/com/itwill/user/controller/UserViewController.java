@@ -18,12 +18,8 @@ public class UserViewController implements Controller{
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		String forwardPath="";
 		HttpSession session = request.getSession();
-		/****************login_check*******************/
 		String sUserId=(String)session.getAttribute("sUserId");
-		if(sUserId==null){
-			forwardPath="redirect:user_main.do";
-			return forwardPath;
-		}
+		/****************login_check*******************/
 		/*********************************************/
 		/*
 		1. UserService객체생성
