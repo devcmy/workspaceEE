@@ -25,6 +25,10 @@ public class LoginCheckFilter implements Filter {
 			resp.sendRedirect("user_main.do");
 			return;
 		}
+		chain.doFilter(request, response);
+		
+		
+		
 	}
 
 }
