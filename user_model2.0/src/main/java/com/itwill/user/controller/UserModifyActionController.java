@@ -37,6 +37,7 @@ public class UserModifyActionController implements Controller {
 		
 		if(request.getMethod().equalsIgnoreCase("GET")) {
 			forwardPath="redirect:user_main.do";
+			return forwardPath;
 		}else {
 			try {
 				request.setCharacterEncoding("UTF-8");
