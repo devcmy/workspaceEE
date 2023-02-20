@@ -22,7 +22,7 @@ public class InternationalizationServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		
 		Locale defaultLocale = Locale.getDefault();//os locale
-		Locale requestLocale = request.getLocale();//요청부라우져 locale
+		Locale requestLocale = request.getLocale();//요청 브라우져 locale
 		
 		Locale usLocale=new Locale("en", "US");
 		Locale jpLocale=new Locale("ja", "JP");
