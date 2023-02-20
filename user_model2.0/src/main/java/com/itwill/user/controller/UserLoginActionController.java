@@ -9,11 +9,12 @@ import org.apache.catalina.Session;
 import com.itwill.summer.mvc.Controller;
 import com.itwill.user.User;
 import com.itwill.user.UserService;
+import com.itwill.user.UserServiceImpl;
 
 public class UserLoginActionController implements Controller {
 	private UserService userService;
 	public UserLoginActionController() throws Exception{
-		userService=new UserService();
+		userService=new UserServiceImpl();
 	}
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {

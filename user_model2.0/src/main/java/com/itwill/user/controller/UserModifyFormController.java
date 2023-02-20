@@ -7,11 +7,12 @@ import javax.servlet.http.HttpSession;
 import com.itwill.summer.mvc.Controller;
 import com.itwill.user.User;
 import com.itwill.user.UserService;
+import com.itwill.user.UserServiceImpl;
 
 public class UserModifyFormController implements Controller{
 	UserService userService;
 	public UserModifyFormController() throws Exception {
-		userService = new UserService();
+		userService = new UserServiceImpl();
 	}
 
 	@Override
