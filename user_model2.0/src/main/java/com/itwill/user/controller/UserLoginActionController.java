@@ -41,16 +41,16 @@ public class UserLoginActionController implements Controller {
 			
 			if(loginResult == 0) {
 				String msg1=userId+" 는 존재하지 않는 아이디입니다.";
-				fuser.setUserId(userId);
-				fuser.setPassword(password);
+				//fuser.setUserId(userId);
+				//fuser.setPassword(password);
 				request.setAttribute("msg1", msg1);
 				request.setAttribute("fuser", fuser);
 				forwardPath="forward:/WEB-INF/views/user_login_form.jsp";
 				
 			}else if (loginResult == 1) {
 				String msg2="비밀번호가 일치하지 않습니다.";
-				fuser.setUserId(userId);
-				fuser.setPassword(password);
+				//fuser.setUserId(userId);
+				//fuser.setPassword(password);
 				request.setAttribute("msg2", msg2);
 				request.setAttribute("fuser", fuser);
 				forwardPath="forward:/WEB-INF/views/user_login_form.jsp";
