@@ -3,9 +3,9 @@
 <%@page import="com.itwill.util.NumberFormatter" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
-	String title="오늘은 목요일 날씨가 맑아요 기분이 상쾌하네요!";
+	String title="오늘은 월요일 날씨가 맑아요 기분이 상쾌하네요!";
 	request.setAttribute("title", title);
 	request.setAttribute("name","JAMES");
 	request.setAttribute("price",1234567);
@@ -21,7 +21,8 @@
 <body>
 <h1>JSTL function[ EL안에서 사용가능한 ]</h1><hr>
 <ul>
-	<li>--JSTL에서제공하는 EL내에서사용가능한function(ㅠㅠㅠㅠ)---</li>
+	<li>--JSTL에서제공하는 EL내에서사용가능한function(^-^)---</li>
+	<li>${title}</li>
 	<li>-- 표준 EL 안에서는  EL객체(속성객체)의 메쏘드호출이가능 --</li>
 	<li>-- 표준 EL안에서는  static method호출 가능(객체생성없이호출가능한메쏘드)  --</li>
 	<li>-- 표준 EL안에서는  객체생성불가능(생성자호출불가능) --</li>
