@@ -21,7 +21,8 @@ public class UserModifyFormController implements Controller{
 		/****************login_check*******************/
 		String sUserId=(String)session.getAttribute("sUserId");
 		if(sUserId==null){
-			forwardPath="redirect:login_form.do";
+			forwardPath="redirect:user_main.do";
+			return forwardPath;
 		}
 		/*********************************************/
 		/*

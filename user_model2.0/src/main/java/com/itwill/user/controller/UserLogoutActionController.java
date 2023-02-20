@@ -17,6 +17,7 @@ public class UserLogoutActionController implements Controller{
 		String sUserId=(String)session.getAttribute("sUserId");
 		if(sUserId==null){
 			forwardPath="redirect:user_main.do";
+			return forwardPath;
 		}
 		/*********************************************/
 		session.invalidate();
